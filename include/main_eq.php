@@ -83,7 +83,39 @@
         </div>
     </div>
 
-    <div> Run Time Info </div>
+    <div style= margin-top:10px;> Run Time Info </div>
+    <div id="runtimeInfo">
+    <!-- Content will be updated here -->
+</div>
 </div>
 
+<script>
+function fetchData() {
+    fetch('../api/received_data.json')
+        .then(response => response.json())
+        .then(data => {
+            const messages = data["AOI-03"].filter(item => item.Function === "UIRTMessage").map(item => item.List2[0]);
+            const runtimeInfoDiv = document.getElementById('runtimeInfo');
+            runtimeInfoDiv.innerHTML = ""; // Clear previous content
+            if (messages.length > 0) {
+                messages.forEach(message => {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.textContent = message;
+                    console.log(message);
+                    messageDiv.classList.add('message'); // Add message class for styling
+                    runtimeInfoDiv.appendChild(messageDiv);
+                });
+            } else {
+                runtimeInfoDiv.innerHTML = "<div>No UIRT Messages</div>";
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+}
+// Call fetchData initially
+fetchData();
 
+// Call fetchData every 5 seconds
+setInterval(fetchData, 5000);
+</script>

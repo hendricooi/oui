@@ -1,0 +1,102 @@
+{
+    "AOI-03": [
+        {
+            "Function": "SetLPStatus",
+            "List1": [
+                "WaitReset"
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "UIRTMessage",
+            "List1": [
+                "RED-ERR"
+            ],
+            "List2": [
+                "08-May-2024 15:45:41 : ERR - {501} <CC> Failed Lot Validation. Reason:  <WFL> Failed to get [LotValidation] reply from WFL server."
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "SetLOADButtonAvailability",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "UISetLPButtonName",
+            "List1": [
+                "RED"
+            ],
+            "List2": [
+                "RESET"
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "SetEquipmentStatus",
+            "List1": [
+                "RED"
+            ],
+            "List2": [
+                "NG"
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "SetUNLOADButtonAvailability",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "SetLPLotId",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "SetLPRecipeId",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "Set\/clear equipment blinking status",
+            "List1": [
+                "AOI-03"
+            ],
+            "List2": [
+                "Set EQP Blinking Status to OUI"
+            ],
+            "Value": 0
+        }
+    ],
+    "": [
+        {
+            "Function": "EquipmentListReportedFromCCM",
+            "List1": null,
+            "List2": null,
+            "Value": null
+        }
+    ]
+}

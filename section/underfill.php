@@ -12,7 +12,7 @@
 </head>
 <body>
 <?php
-include($path . "include\global.php");
+include("..\include\global.php");
 include($path . 'send_request.php');
 include($path .  'include\header.php');
 include($path .  'class\section.class.php');

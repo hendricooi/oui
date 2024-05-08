@@ -40,7 +40,7 @@ class Section{
             }
             else {
                 // If value not an array
-                $keyElement = "<span><a style='margin-left:20px;' onclick=\"openEQ('$eq','$key', this)\">$key</a></span>";
+                $keyElement = "<img style='height:20px;'src='/oui/img/clock.png'><span><a style='margin-left:20px;' onclick=\"openEQ('$eq','$key', this)\">$key</a></span>";
             }
             // Add the key-value pair to the list view
             $listView .= "<li>$keyElement $value</li>";

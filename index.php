@@ -12,6 +12,7 @@
     <title>AMD OUI : Penang OTA </title>
 </head>
 <?php
+session_start();
 include("include/global.php");
 include($path . "send_request.php");
 include($path . "class/Section.class.php");
@@ -60,7 +61,7 @@ foreach ($array as $index => $arrays) {
     </div>
     <div id="addressBookContent" style="display: none;">
     <?php
-        echo"abc";
+        echo  $_SESSION['eqpId'];;
     ?>
     </div>
 

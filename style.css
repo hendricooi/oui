@@ -41,17 +41,41 @@
   width:-webkit-fill-available;
   border-radius:15px;
 }
-  .sideEq {
-    border:2px solid grey;
-    background-color:white;
-    width: 250px;
-    height: 570px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    text-align: left;
-    margin-left:5px;
-    padding-left:5px;
-  }
+.sideEq {
+  border: 2px solid grey;
+  background-color: white;
+  width: 400px;
+  height: 570px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: left;
+  margin-left: 5px;
+  padding: 10px; /* Adjust padding for better spacing */
+  border-radius: 10px; /* Add rounded corners */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+/* Style for list items */
+.sideEq ul {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0;
+}
+
+.sideEq li {
+  padding: 8px 0; /* Adjust padding for list items */
+  border-bottom: 1px solid #ccc; /* Add border between list items */
+}
+
+/* Style for last list item */
+.sideEq li:last-child {
+  border-bottom: none; /* Remove border from last list item */
+}
+
+/* Hover effect for list items */
+.sideEq li:hover {
+ /* Change background color on hover */
+  cursor: pointer;
+}
   
   /* Styles for the menu links */
 
@@ -481,4 +505,19 @@ i {
 }
 #WIP th {
   background-color: #f2f2f2;
+}
+
+#runtimeInfo {
+  width: 98%;
+  max-height: 130px;
+  height:130px;
+  background-color: lightgray;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  overflow-y: auto; /* Enable vertical scrollbar */
+}
+
+.message {
+  margin-bottom: 5px; /* Add some spacing between messages */
 }

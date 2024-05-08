@@ -31,7 +31,7 @@ if (isset($_SESSION['Load'])) {
 
 <script>
 
-fetch('../api/api.php', {
+fetch('../api/load.php', {
 	method: 'POST',
 	headers: {
 		'X-Requested-With': 'XMLHttpRequest',
