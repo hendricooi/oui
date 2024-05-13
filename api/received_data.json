@@ -1,22 +1,90 @@
 {
+    "": [
+        {
+            "Function": "EquipmentListReportedFromCCM",
+            "List1": null,
+            "List2": null,
+            "Value": null
+        },
+        {
+            "Function": "LostConnection",
+            "List1": null,
+            "List2": null,
+            "Value": null
+        },
+        {
+            "Function": "AMDSiteName",
+            "List1": null,
+            "List2": null,
+            "Value": null
+        },
+        {
+            "Function": "EnableKeyIn",
+            "List1": null,
+            "List2": null,
+            "Value": "1"
+        },
+        {
+            "Function": "TCPConnected",
+            "List1": null,
+            "List2": null,
+            "Value": null
+        },
+        {
+            "Function": "DeveloperLogin",
+            "List1": null,
+            "List2": null,
+            "Value": "1"
+        },
+        {
+            "Function": "HSMSSelected",
+            "List1": null,
+            "List2": null,
+            "Value": null
+        },
+        {
+            "Function": "BarcodeIDKeystrokeDelay",
+            "List1": null,
+            "List2": null,
+            "Value": "200"
+        },
+        {
+            "Function": "EnableDebugConsole",
+            "List1": null,
+            "List2": null,
+            "Value": "0"
+        },
+        {
+            "Function": "BypassNewXsite",
+            "List1": null,
+            "List2": null,
+            "Value": "0"
+        },
+        {
+            "Function": null,
+            "List1": null,
+            "List2": null,
+            "Value": null
+        }
+    ],
     "AOI-03": [
         {
-            "Function": "SetLPStatus",
+            "Function": "SetEquipmentStatus",
             "List1": [
-                "WaitReset"
+                "BLUE"
             ],
             "List2": [
-                ""
+                "IDLE"
             ],
             "Value": 0
         },
         {
             "Function": "UIRTMessage",
             "List1": [
-                "RED-ERR"
+                "BLUE-INF"
             ],
             "List2": [
-                "08-May-2024 15:45:41 : ERR - {501} <CC> Failed Lot Validation. Reason:  <WFL> Failed to get [LotValidation] reply from WFL server."
+                "13-May-2024 11:57:29 : INF - <CC> INPUT is Idle."
             ],
             "Value": 0
         },
@@ -31,29 +99,9 @@
             "Value": 0
         },
         {
-            "Function": "UISetLPButtonName",
+            "Function": "SetLPStatus",
             "List1": [
-                "RED"
-            ],
-            "List2": [
-                "RESET"
-            ],
-            "Value": 0
-        },
-        {
-            "Function": "SetEquipmentStatus",
-            "List1": [
-                "RED"
-            ],
-            "List2": [
-                "NG"
-            ],
-            "Value": 0
-        },
-        {
-            "Function": "SetUNLOADButtonAvailability",
-            "List1": [
-                ""
+                "Idle"
             ],
             "List2": [
                 ""
@@ -81,6 +129,16 @@
             "Value": 0
         },
         {
+            "Function": "UISetLPButtonName",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                "LOAD"
+            ],
+            "Value": 0
+        },
+        {
             "Function": "Set\/clear equipment blinking status",
             "List1": [
                 "AOI-03"
@@ -89,14 +147,86 @@
                 "Set EQP Blinking Status to OUI"
             ],
             "Value": 0
-        }
-    ],
-    "": [
+        },
         {
-            "Function": "EquipmentListReportedFromCCM",
-            "List1": null,
-            "List2": null,
-            "Value": null
+            "Function": "SetUNLOADButtonAvailability",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "CC Request Clear UI",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "UI update tool ID",
+            "List1": [
+                "AOI-03"
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "Retrieve RTD bypass flag from common code",
+            "List1": [
+                1
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "Set Equipment Funtion Tab",
+            "List1": [
+                "AOI-03"
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 1
+        },
+        {
+            "Function": "Handle extra button settings",
+            "List1": [
+                "$REMOVE LOT"
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 1
+        },
+        {
+            "Function": "Set Equipment XSite State",
+            "List1": [
+                "XSite = IDLE"
+            ],
+            "List2": [
+                "Set EQP XSite State to OUI"
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "AutoLogOff",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
         }
     ]
 }

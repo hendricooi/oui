@@ -40,7 +40,7 @@ class Section{
             }
             else {
                 // If value not an array
-                $keyElement = "<img style='height:20px;'src='/oui/img/clock.png'><span><a style='margin-left:20px;' onclick=\"openEQ('$eq','$key', this)\">$key</a></span>";
+                $keyElement = "<div style='display: flex;'><img id='img-$key'style='height:20px;'src='/oui/img/clock.png'><div style='margin-left:20px; width: -webkit-fill-available;' onclick=\"openEQ('$eq','$key', this)\"><span>$key</span>";
             }
             // Add the key-value pair to the list view
             $listView .= "<li>$keyElement $value</li>";
@@ -59,36 +59,35 @@ class Section{
         global $path;
 
         $display="<div id='$section-div' style='display:block;'> Select Equipment to begin with.</div>";
-
         $data = json_decode($jsonString, true);
         // Iterate over the associative array
         foreach ($data as $key => $value) {
             $isArray = is_array($value);
             if ($isArray) {
                 echo "<div id='$section-$key-div' style='display:none;'>Equipment ID: $key";
-                include($path . "include/main_eq.php");
+                include($path . "include/main_eq_key.php");
                 echo "</div>"; // outer most div 
 
                 foreach ($value as $item =>$subitem) {
                     echo "<div id='$section-$item-div' style='display:none;'>Equipment ID: $item";
-                    include($path . "include/main_eq.php");
+                    include($path . "include/main_eq_item.php");
                     echo "</div>"; // outer most div 
                 }
         }
 
         else if($value !== ""){
             echo "<div id='$section-$key-div' style='display:none;'>Equipment ID: $key";
-            include($path . "include/main_eq.php");
+            include($path . "include/main_eq_key.php");
             echo "</div>"; // outer most div 
 
             echo "<div id='$section-$value-div' style='display:none;'>Equipment ID: $value";
-            include($path . "include/main_eq.php");
+            include($path . "include/main_eq_value.php");
             echo "</div>"; // outer most div 
         }
 
         else{ //only equipment no array
-            echo "<div id='$section-$key-div' style='display:none;'>Equipment ID = $key";
-            include($path . "include/main_eq.php");
+            echo "<div id='$section-$key-div' style='display:none;'>Equipment ID = <a style='font-size:30px; color:blue;'>$key </a>";
+            include($path . "include/main_eq_key.php");
             echo "</div>"; // outer most div 
         }
     }
@@ -99,76 +98,6 @@ class Section{
     }
 }
 
-//Get section names
-// $ini_contents = file("D:\OUI stuff\Simulation\CCM\CCM.ini");
-// $sections = [];
-// $current_section = '';
-
-// // Iterate over each line in the INI file
-// foreach ($ini_contents as $line_number => $line) {
-//     // Trim leading and trailing whitespace
-//     $line = trim($line);
-    
-//     // Skip empty lines
-//     if (empty($line)) {
-//         continue;
-//     }
-    
-//     // If the line contains a section header
-//     if ($line[0] === '[' && substr($line, -1) === ']') {
-//         // Get the section name
-//         $current_section = trim($line, '[]');
-//         // Create a new array for the section
-//         $sections[$current_section] = [];
-//     } else {
-//         // Split the line into key and value (if applicable)
-//         $parts = explode('=', $line, 2);
-//         $key = trim($parts[0]);
-//         $value = isset($parts[1]) ? trim($parts[1]) : ''; // If no value, use empty string
-        
-//         // Check if the value contains multiple items separated by commas
-//         if (strpos($value, ',') !== false) {
-//             // If so, split the value and format it accordingly
-//             $items = explode(',', $value);
-//             foreach ($items as $item) {
-//                 $sections[$current_section][$key][] = trim($item);
-//             }
-//         } else {
-//             // If not, add the key-value pair to the current section
-//             $sections[$current_section][$key] = $value;
-//         }
-        
-//         // Check if the next line contains a section header
-//         if (isset($ini_contents[$line_number + 1]) && $ini_contents[$line_number + 1][0] === '[' && substr($ini_contents[$line_number + 1], -1) === ']') {
-//             // If so, move to the next section
-//             $current_section = '';
-//         }
-//     }
-// }
-
-// function customSort($a, $b) {
-//     // Convert both keys to lowercase
-//     $aLower = strtolower($a);
-//     $bLower = strtolower($b);
-
-//     // Check if both keys are numeric
-//     $aIsNumeric = is_numeric($a);
-//     $bIsNumeric = is_numeric($b);
-
-//     // If both are numeric, compare them numerically
-//     if ($aIsNumeric && $bIsNumeric) {
-//         return $a - $b;
-//     }
-//     // If one is numeric and the other is not, the numeric one comes first
-//     elseif ($aIsNumeric) {
-//         return -1;
-//     } elseif ($bIsNumeric) {
-//         return 1;
-//     }
-
-//     // If both are not numeric, compare them alphabetically
-//     return strcasecmp($aLower, $bLower);
-// }
 $response_section = makeCurlRequest("RequestShopFloorArea","OUI");
 $response_section = str_replace(' ', '', $response_section);
 $array=json_decode($response_section, true);

@@ -42,6 +42,7 @@ echo"<div class='container'>";
 
 include($path .  'include\footer.php');
 ?>
+
 <script src="../include/script_eq.js" type="text/javascript"></script>
 <script src="../include/script_jquery.js" type="text/javascript"></script>
 </body>

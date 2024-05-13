@@ -163,25 +163,7 @@ function openUnloadPage() {
 }
 
 
-function openLoadPopoutWindow() {
-    // Define the URL of the pop-out window
-    // Check if the user is logged in before opening the popout window
 
-    var openWindowIfLoggedIn = function() {
-    var url = "../window/load_page.php";
-
-    // Define the dimensions and position of the pop-out window
-    var width = 600;
-    var height = 400;
-    var left = (screen.width - width) / 2;
-    var top = (screen.height - height) / 2;
-
-    // Open the pop-out window with specified dimensions and position
-    window.open(url, "popoutWindow", "width=" + width + ", height=" + height + ", left=" + left + ", top=" + top);
-};
-checkLoggedIn(openWindowIfLoggedIn);
-
-}
 
 function openCancelLotPopoutWindow() {
     // Define the URL of the pop-out window
@@ -201,3 +183,5 @@ function openCancelLotPopoutWindow() {
 // Check if the user is logged in before opening the popout window
 checkLoggedIn(openWindowIfLoggedIn);
 }
+
+
