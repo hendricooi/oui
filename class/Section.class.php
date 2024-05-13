@@ -40,6 +40,7 @@ class Section{
             }
             else {
                 // If value not an array
+                include('../include/img.php');
                 $keyElement = "<div style='display: flex;'><img id='img-$key'style='height:20px;'src='/oui/img/clock.png'><div style='margin-left:20px; width: -webkit-fill-available;' onclick=\"openEQ('$eq','$key', this)\"><span>$key</span>";
             }
             // Add the key-value pair to the list view
@@ -107,6 +108,7 @@ foreach ($array as $arrays) {
 ?>
 <script>
 
+
 function setSession(eq, value) {
     console.log("abc");
     // Send an AJAX request or redirect to a PHP script to set the session variable
@@ -125,4 +127,7 @@ function setSession(eq, value) {
     };
     xhr.send('eq=' + encodeURIComponent(eq) + '&value=' + encodeURIComponent(value));
 }
+
+
+
 </script>

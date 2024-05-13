@@ -71,20 +71,20 @@
         {
             "Function": "SetEquipmentStatus",
             "List1": [
-                "BLUE"
+                "RED"
             ],
             "List2": [
-                "IDLE"
+                "NG"
             ],
             "Value": 0
         },
         {
             "Function": "UIRTMessage",
             "List1": [
-                "BLUE-INF"
+                "RED-ERR"
             ],
             "List2": [
-                "13-May-2024 11:57:29 : INF - <CC> INPUT is Idle."
+                "13-May-2024 13:23:32 : ERR - {501} <CC> Failed Lot Validation. Reason:  <WFL> Failed to get [LotValidation] reply from WFL server."
             ],
             "Value": 0
         },
@@ -101,7 +101,7 @@
         {
             "Function": "SetLPStatus",
             "List1": [
-                "Idle"
+                "WaitReset"
             ],
             "List2": [
                 ""
@@ -131,10 +131,10 @@
         {
             "Function": "UISetLPButtonName",
             "List1": [
-                ""
+                "RED"
             ],
             "List2": [
-                "LOAD"
+                "RESET"
             ],
             "Value": 0
         },

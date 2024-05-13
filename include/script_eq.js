@@ -13,55 +13,67 @@ toggler[i].addEventListener("click", function() {
     this.parentElement.querySelector(".nested").classList.toggle("active");
 });
 }
-
 function openEQ(eq, item, element) {
-    // Get the div element corresponding to the item
-    var divId = eq + "-" + item + "-div";
-    var divElement = document.getElementById(divId);
+    // Fetch received_data.json to check if item exists
+    fetch('../api/received_data.json')
+        .then(response => response.json())
+        .then(data => {
+            // Check if item exists in the array
+            const itemExists = Object.keys(data).includes(item);
+            if (itemExists) {
+                // Get the div element corresponding to the item
+                var divId = eq + "-" + item + "-div";
+                var divElement = document.getElementById(divId);
 
-    // Check if the divElement exists
-    if (divElement) {
-        // Iterate over all elements with the same eq
-        var elements = document.querySelectorAll("[id^='" + eq + "-']");
-        elements.forEach(function(el) {
-            // Toggle the visibility of the element
-            if (el.id === divId) {
-                // Show the current element
-                el.style.display = "block";
-            } else {
-                // Hide other elements
-                el.style.display = "none";
-            }
-        });
+                // Check if the divElement exists
+                if (divElement) {
+                    // Iterate over all elements with the same eq
+                    var elements = document.querySelectorAll("[id^='" + eq + "-']");
+                    elements.forEach(function(el) {
+                        // Toggle the visibility of the element
+                        if (el.id === divId) {
+                            // Show the current element
+                            el.style.display = "block";
+                        } else {
+                            // Hide other elements
+                            el.style.display = "none";
+                        }
+                    });
 
-        // Add 'highlight' class to the clicked element
-        document.querySelectorAll('.highlight').forEach(el => {
-            el.classList.remove('highlight');
-        });
-        element.classList.add('highlight');
-        updateVariable(item);
-            // Send AJAX request to set session variable
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', '../set_session.php', true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    // Handle the response if needed
-                    console.log(xhr.responseText);
-                    // Session variable set successfully
-                    console.log(item);
+                    // Add 'highlight' class to the clicked element
+                    document.querySelectorAll('.highlight').forEach(el => {
+                        el.classList.remove('highlight');
+                    });
+                    element.classList.add('highlight');
+                    updateVariable(item);
                     
-                    console.log('Session variable set successfully');
+                    // Send AJAX request to set session variable
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', '../set_session.php', true);
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhr.onload = function() {
+                        if (xhr.status === 200) {
+                            // Handle the response if needed
+                            console.log(xhr.responseText);
+                            // Session variable set successfully
+                            console.log(item);
+                            console.log('Session variable set successfully');
+                        } else {
+                            // Error setting session variable
+                            console.error('Error setting session variable');
+                        }
+                    };
+                    xhr.send("eqpId=" + item);
                 } else {
-                    // Error setting session variable
-                    console.error('Error setting session variable');
+                    console.error("Div element not found:", divId);
                 }
-            };
-            xhr.send("eqpId=" + item);
-        }else {
-            console.error("Div element not found:", divId);
-        }
-    }
+            } else {
+                // Alert if equipment is not online
+                alert("Equipment not online.");
+            }
+        })
+        .catch(error => console.error('Error fetching data:', error));
+}
 
 function updateVariable(item){
     eqpId = item;
