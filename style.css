@@ -348,15 +348,18 @@ i {
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
-.LPButton{
+.LButton{
   font-size:15px;
   height:25px; 
   width:150px; 
   margin-top:8px;
+  cursor: pointer;
+}
+.LButton:hover {
+  background-color: darkgrey;
 }
 
 .eq-button {
-  background-color: rgb(192, 187, 187 / 48%);
   height: 35px;
   width: 150px;
   margin: 3px;
@@ -516,17 +519,17 @@ i {
 
 .runtimeInfo {
   width: 98%;
-  max-height: 140px;
+  max-height: 125px;
   height:125px;
   background-color: lightgray;
-  margin-top: 10px;
+  margin-top: 5px;
   padding: 10px;
   border-radius: 10px;
   overflow-y: auto; /* Enable vertical scrollbar */
 }
 
 .message {
-  margin-bottom: 5px; /* Add some spacing between messages */
+  margin-bottom: 6px; /* Add some spacing between messages */
 }
 
 .error {

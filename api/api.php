@@ -32,7 +32,6 @@ if ($method === 'POST') {
     if (file_exists('received_data.json')) {
         $existingData = json_decode(file_get_contents('received_data.json'), true);
     }
-    
     // Check if $existingData has already been initialized for the current EqpId
     if (isset($existingData[$data["EqpId"]])) {
         $updated = false; // Flag to check if data was updated
@@ -90,31 +89,3 @@ if ($method === 'POST') {
 
 }
 ?>
-<!-- <script>
-// Define a function to handle the API call
-function callApi() {
-    fetch('../api/load.php', {
-        method: 'POST',
-        headers: {
-            'X-Requested-With': 'XMLHttpRequest',
-            'Content-Type': 'application/json' // Specify content type as JSON
-        },
-        body: JSON.stringify({
-            'Load': '<?php isset($data) ? $data : '' ?>'
-            // Assuming 'Load' is the key you want to send
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Handle the response data here
-        console.log(data);
-        // You can do further processing here based on the response
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-}
-
-// Call the function when the page loads or whenever you want to trigger the API call
-callApi();
-</script> -->

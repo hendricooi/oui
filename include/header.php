@@ -6,3 +6,4 @@
         Cell Controller (OTA)
         <img src="../img/logo.jpeg" alt="logo site" id="logo_site"/>
 </ul>
+<?php 
