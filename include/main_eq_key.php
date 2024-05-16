@@ -19,7 +19,7 @@ $key_div = str_replace('-', '_', $key);
         <div class="value"><?php echo isset($_SESSION['ID']) ? $_SESSION['ID'] : ''; ?></div>
     </div>
 </div>
-        <div style='display: flex; flex-direction: column; margin-top:10px; border: 1px solid #ccc; border-radius: 5px; padding: 10px;' >
+        <div style='display: flex; flex-direction: column; margin-top:10px; border: 1px solid #ccc; border-radius: 5px; padding: 10px; height:70px;' >
             <div style='font-weight:bold'>Lot status</div>
             <div style='display: flex; flex-direction: row;'>
                 <div style='flex: 1; margin-left:50px;'>
@@ -36,14 +36,16 @@ $key_div = str_replace('-', '_', $key);
                 </div>
                 <div style='display: flex; flex-direction: column;'>
                     <button class= 'LButton' id="LoadButton-<?php echo $key_div ?>" onclick='checkLoggedIn()'></button>
-                    <button class= 'LButton' onclick='openCancelLotPopoutWindow()'>Cancel Load</button>
+                    <button class= 'LButton' style="margin-top:5px;" onclick='openCancelLotPopoutWindow()'>Cancel Load</button>
                 </div>
             </div>
         </div>
     <div style='margin-top:10px; border: 1px solid #ccc; border-radius: 5px; padding: 10px;'>
-        <div> Work in Progress(WIP) data</div>
+        <div style="font-weight:bold;"> Work in Progress(WIP) data</div>
+        <div id="tableContainer-<?php echo $key_div ?>" style="max-height: 100px; overflow-y: auto; ">
         <table border=1 style='margin-top: 5px; width:100%;'>
-            <tr>
+        <thead style="position:sticky; border:1px solid #000; background-color:#fff; top:0;">
+            <tr style="height:20px;">
                 <th>LotID</th>
                 <th>Operation</th>
                 <th>Device</th>
@@ -54,20 +56,14 @@ $key_div = str_replace('-', '_', $key);
                 <th>User ID</th>
                 <th>Time In</th>
             </tr>
-            <tr>
-                <td data-label='LotID'>abc</td>
-                <td data-label='Operation'>cdef</td>
-                <td data-label='Device'>ewrew</td>
-                <td data-label='Package'>12312321</td>
-                <td data-label='TrackInQty'>12323</td>
-                <td data-label='Recipe'>rgbgrb</td>
-                <td data-label='Status'>rbgrb</td>
-                <td data-label='UserID'>ikiu</td>
-                <td data-label='TimeIn'>546454</td>
-            </tr>
-        </table>
+        </thead>
+        <tbody id="wipInfoTableBody-<?php echo $key_div ?>" style="height:60px;">
+            <!-- Table rows will be appended here -->
+        </tbody>
+    </table>
+</div>
 
-        <div style='display: flex; margin-top:20px; border:1px solid black; padding-right:5px;'>
+        <div style='display: flex; margin-top:10px; border:1px solid black; padding-right:5px;'>
             <div style='display: flex; flex-wrap: wrap; width:100%;'>
                 <button class=eq-button onclick='checkLoggedIn()'>Reserved 1</button>
                 <button class=eq-button>Reserved 2</button>
@@ -81,7 +77,7 @@ $key_div = str_replace('-', '_', $key);
                 <button class=eq-button>Reserved 10</button>
             </div>
             <div style='display:flex; width: 20%;'>
-                <button class='LButton' style='margin-top:30px;' onclick='unloadLotPopoutWindow()'>Unload</button>
+                <button class='LButton' style='margin-top:15px;' onclick='unloadLotPopoutWindow()'>Unload</button>
             </div>
         </div>
     </div>
@@ -93,36 +89,40 @@ $key_div = str_replace('-', '_', $key);
     </div>
 
 <script>
-
 const appendedMessages_<?php echo $key_div ?> = new Set();
 
 function fetchData() {
     fetch('../api/received_data.json')
         .then(response => response.json())
         .then(data => {
-            const messages = data["<?php echo $key ?>"].filter(item => item.Function === "UIRTMessage").map(item => item.List2[0]);
+            const uirtMessages = data["<?php echo $key ?>"].filter(item => item.Function === "UIRTMessage").map(item => item.List2);
             const runtimeInfoDiv = document.getElementById('runtimeInfo-<?php echo $key_div ?>');
-            if (messages.length > 0) {
-                messages.forEach(message => {
-                    if (!appendedMessages_<?php echo $key_div ?>.has(message)) {
-    // Check if message is already present in the DOM
-                        if (!runtimeInfoDiv.querySelector(`.message[data-content="${message}"]`)) {
-                            const messageDiv = document.createElement('div');
-                            messageDiv.textContent = message;
-                            messageDiv.dataset.content = message; // Set data attribute to identify message content
-                            messageDiv.classList.add('message'); // Add message class for styling
-                            // Check if message starts with "ERR" and add red color
-                            if (message.includes("ERR")) {
-                                messageDiv.classList.add('error'); // Add error class
-                            }
-                            // Insert new message before the first child of runtimeInfoDiv
-                            runtimeInfoDiv.insertBefore(messageDiv, runtimeInfoDiv.firstChild);
-                        }
-                        appendedMessages_<?php echo $key_div ?>.add(message); // Add message to the set of appended messages
+
+            // Clear the existing messages
+            runtimeInfoDiv.innerHTML = '';
+
+            if (uirtMessages.length > 0) {
+                // Flatten the array and sort messages in descending order
+                const allMessages = uirtMessages.flat().sort((a, b) => b.localeCompare(a));
+
+                allMessages.forEach(message => {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.textContent = message;
+                    messageDiv.dataset.content = message; // Set data attribute to identify message content
+                    messageDiv.classList.add('message'); // Add message class for styling
+                    // Check if message contains "ERR" and add error class
+                    if (message.includes("ERR")) {
+                        messageDiv.classList.add('error'); // Add error class
                     }
+                    // Append new message to runtimeInfoDiv
+                    runtimeInfoDiv.appendChild(messageDiv);
                 });
             } else {
- // Append message indicating no UIRT Messages
+                // Append message indicating no UIRT Messages
+                const noMessagesDiv = document.createElement('div');
+                noMessagesDiv.textContent = 'No UIRT Messages';
+                noMessagesDiv.classList.add('no-messages');
+                runtimeInfoDiv.appendChild(noMessagesDiv);
             }
         })
         .catch(error => {
@@ -132,6 +132,8 @@ function fetchData() {
 // Call fetchData initially
 fetchData();
 setInterval(fetchData, 3000);
+
+
 
 function updateLPStatus() {
     fetch('../api/received_data.json')
@@ -172,7 +174,9 @@ function updateEqStatus() {
                 EqStatusDiv.innerHTML = ''; // Clear existing content
                 EqStatusDiv.innerHTML = messages[0]; // Assuming only one message is to be displayed
                 // Set font color based on color value
-                EqStatusDiv.style.color = colors[0] === "BLUE" ? "blue" : (colors[0] === "RED" ? "red" : "black");
+                EqStatusDiv.style.color = colors[0] === "BLUE" ? "blue" : 
+                                        colors[0] === "RED" ? "red" : 
+                                        colors[0] === "GREEN" ? "green" : "black";
             } else {
             
             }
@@ -250,6 +254,7 @@ function updateLPButtonName() {
 }
 updateLPButtonName();
 setInterval(updateLPButtonName, 3000);
+
 function resetData() {
     var resetIfLoggedIn = function() {
     // Make an AJAX call to the PHP function
@@ -274,4 +279,48 @@ function resetData() {
 }
 checkLoggedIn(resetIfLoggedIn); 
 }
+
+function fetchTableData() {
+    fetch('../api/received_data.json')
+        .then(response => response.json())
+        .then(data => {
+            // Extract the WIP info messages where the function is "SetWIPInfo"
+            const wipInfoMessages = data["<?php echo $key ?>"].filter(item => item.Function === "SetWIPInfo").flatMap(item => item.List1);
+            const wipInfoTableBody = document.getElementById('wipInfoTableBody-<?php echo $key_div ?>');
+            
+            // Clear existing table rows
+            wipInfoTableBody.innerHTML = '';
+
+            // Check if there are any WIP info messages to display
+            if (wipInfoMessages.length > 0) {
+                // Iterate over each WIP info entry and create a table row for it
+                wipInfoMessages.forEach(info => {
+                    const row = document.createElement('tr');
+                    row.style.height = '25px';
+                    row.style.maxHeight = '25px';
+                    row.style.color = 'blue';
+
+                    // Iterate over each piece of data in the entry and create a table cell for it
+                    info.forEach(cellData => {
+                        const cell = document.createElement('td');
+                        cell.textContent = cellData;
+                        row.appendChild(cell);
+                    });
+
+                    // Append the completed row to the table body
+                    wipInfoTableBody.appendChild(row);
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+}
+
+// Call the function initially to fetch and display data
+fetchTableData();
+// Set an interval to refresh the data every 3000 milliseconds (3 seconds)
+setInterval(fetchTableData, 3000);
+
+
 </script>
