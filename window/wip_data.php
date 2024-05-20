@@ -6,7 +6,15 @@
 <link rel="stylesheet" type="text/css" media="screen" href="/oui/style.css" />
 <title>WIP Data</title>
 </head>
+<?php
+session_start();
+$UnloadData = json_decode($_SESSION['UnloadDialog'], true);
+// print_r($data);
+$LotInfo = $UnloadData['List2'][0][1];
+$RejectInfo = $UnloadData['List2'][1][1];
+$WIPInfo = $UnloadData['List2'][2][1];
 
+?>
 <body>
     <h2>WIP Data</h2>
     <table id="WIP">
@@ -17,23 +25,18 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Item 1</td>
-                <td>Value 1</td>
-            </tr>
-            <tr>
-                <td>Item 2</td>
-                <td>Value 2</td>
-            </tr>
-            <tr>
-                <td>Item 3</td>
-                <td>Value 3</td>
-            </tr>
-            <!-- Add more rows as needed -->
+            <?php
+            foreach ($WIPInfo as $WIP) {
+                echo "<tr>";
+                echo "<td>" . ($WIP[0][1]) . "</td>";
+                echo "<td><input type='text' style='border:none; font-size:15px;' value='" . htmlspecialchars($WIP[1][1], ENT_QUOTES, 'UTF-8') . "'></td>";
+                echo "</tr>";
+            }
+            ?>
         </tbody>
     </table>
     <div class="button-container">
-            <button type='submit' name='submit'>Ok</button>
+            <button type='submit' name='submit' onclick="closeWindow()">OK</button>
             <button onclick="closeWindow()">Cancel</button>
         </div>
 </body>
