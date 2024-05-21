@@ -133,8 +133,6 @@ function fetchData() {
 fetchData();
 setInterval(fetchData, 3000);
 
-
-
 function updateLPStatus() {
     fetch('../api/received_data.json')
         .then(response => response.json())
@@ -188,24 +186,7 @@ function updateEqStatus() {
  updateEqStatus();
 
 setInterval(updateEqStatus, 3000);
-function openLoadPopoutWindow() {
-    // Define the URL of the pop-out window
-    // Check if the user is logged in before opening the popout window
 
-    var openWindowIfLoggedIn = function() {
-    var url = "../window/load_page.php";
-
-    // Define the dimensions and position of the pop-out window
-    var width = 600;
-    var height = 400;
-    var left = (screen.width - width) / 2;
-    var top = (screen.height - height) / 2;
-
-    // Open the pop-out window with specified dimensions and position
-    window.open(url, "popoutWindow", "width=" + width + ", height=" + height + ", left=" + left + ", top=" + top);
-};
-checkLoggedIn(openWindowIfLoggedIn);
-}
 
 function updateLPButtonName() {
     fetch('../api/received_data.json')
@@ -255,6 +236,89 @@ function updateLPButtonName() {
 updateLPButtonName();
 setInterval(updateLPButtonName, 3000);
 
+function fetchTableData() {
+    fetch('../api/received_data.json')
+        .then(response => response.json())
+        .then(data => {
+            // Extract the WIP info messages where the function is "SetWIPInfo"
+            const wipInfoMessages = data["<?php echo $key ?>"].filter(item => item.Function === "SetWIPInfo").flatMap(item => item.List1);
+            const wipInfoTableBody = document.getElementById('wipInfoTableBody-<?php echo $key_div ?>');
+            
+            // Clear existing table rows
+            wipInfoTableBody.innerHTML = '';
+
+            // Check if there are any WIP info messages to display
+            if (wipInfoMessages.length > 0) {
+                const uniqueEntries = []; // To store unique entries
+
+                // Iterate over each WIP info entry
+                wipInfoMessages.forEach(info => {
+                    // Check if the entry is already in the table
+                    const exists = uniqueEntries.some(entry => JSON.stringify(entry) === JSON.stringify(info));
+
+                    // If the entry does not exist, add it to the table and uniqueEntries
+                    if (!exists) {
+                        const row = document.createElement('tr');
+                        row.style.height = '25px';
+                        row.style.maxHeight = '25px';
+                        row.style.color = 'blue';
+
+                        // Iterate over each piece of data in the entry and create a table cell for it
+                        info.forEach(cellData => {
+                            const cell = document.createElement('td');
+                            cell.textContent = cellData;
+                            row.appendChild(cell);
+                        });
+
+                        // Append the completed row to the table body
+                        wipInfoTableBody.appendChild(row);
+
+                        // Add the entry to uniqueEntries
+                        uniqueEntries.push(info);
+                    }
+                });
+            }
+        })
+        .catch(error => {
+        });
+}
+// Call the function initially to fetch and display data
+fetchTableData();
+// Set an interval to refresh the data every 3000 milliseconds (3 seconds)
+setInterval(fetchTableData, 3000);
+
+
+
+function RemoveItem() {
+    fetch('../api/received_data.json')
+        .then(response => response.json())
+        .then(data => {
+            const RemoveData = data["<?php echo $key ?>"].filter(item => item.Function === "RemoveWIPItem").map(item => item.List1[0]);
+            if (RemoveData.length > 0) {
+                // If RemoveData has value, make a request to the PHP script
+                fetch('../include/removeWIP.php', {
+                    method: 'POST',
+                    body: JSON.stringify({ RemoveData: RemoveData }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('PHP script executed successfully');
+                    } else {
+                        console.error('Failed to execute PHP script');
+                    }
+                })
+                .catch(error =>{});
+            } else {
+            }
+        })
+        .catch(error => {});
+}
+RemoveItem();
+setInterval(RemoveItem, 3000);
+
 function resetData() {
     var resetIfLoggedIn = function() {
     // Make an AJAX call to the PHP function
@@ -280,47 +344,22 @@ function resetData() {
 checkLoggedIn(resetIfLoggedIn); 
 }
 
-function fetchTableData() {
-    fetch('../api/received_data.json')
-        .then(response => response.json())
-        .then(data => {
-            // Extract the WIP info messages where the function is "SetWIPInfo"
-            const wipInfoMessages = data["<?php echo $key ?>"].filter(item => item.Function === "SetWIPInfo").flatMap(item => item.List1);
-            const wipInfoTableBody = document.getElementById('wipInfoTableBody-<?php echo $key_div ?>');
-            
-            // Clear existing table rows
-            wipInfoTableBody.innerHTML = '';
+function openLoadPopoutWindow() {
+    // Define the URL of the pop-out window
+    // Check if the user is logged in before opening the popout window
 
-            // Check if there are any WIP info messages to display
-            if (wipInfoMessages.length > 0) {
-                // Iterate over each WIP info entry and create a table row for it
-                wipInfoMessages.forEach(info => {
-                    const row = document.createElement('tr');
-                    row.style.height = '25px';
-                    row.style.maxHeight = '25px';
-                    row.style.color = 'blue';
+    var openWindowIfLoggedIn = function() {
+    var url = "../window/load_page.php";
 
-                    // Iterate over each piece of data in the entry and create a table cell for it
-                    info.forEach(cellData => {
-                        const cell = document.createElement('td');
-                        cell.textContent = cellData;
-                        row.appendChild(cell);
-                    });
+    // Define the dimensions and position of the pop-out window
+    var width = 600;
+    var height = 400;
+    var left = (screen.width - width) / 2;
+    var top = (screen.height - height) / 2;
 
-                    // Append the completed row to the table body
-                    wipInfoTableBody.appendChild(row);
-                });
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        });
+    // Open the pop-out window with specified dimensions and position
+    window.open(url, "popoutWindow", "width=" + width + ", height=" + height + ", left=" + left + ", top=" + top);
+};
+checkLoggedIn(openWindowIfLoggedIn);
 }
-
-// Call the function initially to fetch and display data
-fetchTableData();
-// Set an interval to refresh the data every 3000 milliseconds (3 seconds)
-setInterval(fetchTableData, 3000);
-
-
 </script>

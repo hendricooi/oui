@@ -290,8 +290,8 @@ i {
   cursor: pointer;
   opacity: 0.8;
   position: fixed;
-  bottom: 55px;
-  right: 45px;
+  bottom: 65px;
+  right: 60px;
   width: 130px;
 }
 
@@ -352,7 +352,6 @@ i {
   font-size:15px;
   height:25px; 
   width:150px; 
-  margin-top:8px;
   cursor: pointer;
 }
 .LButton:hover {
@@ -360,8 +359,8 @@ i {
 }
 
 .eq-button {
-  height: 35px;
-  width: 150px;
+  height: 20px;
+  width: 100px;
   margin: 3px;
   flex-basis: 18%;
   font-weight:bold;
@@ -407,24 +406,8 @@ i {
   width: 30%;
 }
 
-.vertical-info .input-group {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 10px;
-}
-
-.vertical-info label {
-  margin-right: 10px;
-  width: 40%; 
-}
 .reject-code{
   margin-left:25px;
-}
-.vertical-info input[type="text"] {
-  width: 60%; /* Adjust input width */
-  padding: 5px;
-  box-sizing: border-box;
 }
 
 
@@ -438,7 +421,8 @@ i {
 }
 
 .table-container {
-  overflow: auto;
+  border: 2px solid grey;
+  overflow-y: auto;
   max-height: 400px; /* Adjust max height as needed */
   width: 75%;
 }
@@ -446,6 +430,13 @@ i {
 #unload {
   width: 100%;
   border-collapse: collapse;
+}
+
+#unload thead th {
+  position: sticky;
+  top: 0;
+  background-color: #f1f1f1; /* Background color for the header */
+  z-index: 1;
 }
 
 #unload th, 
@@ -468,18 +459,18 @@ i {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .vertical-info label {
   margin-right: 10px;
-  width: 40%; 
+  width: 45%; 
 }
 .reject-code{
   margin-left:25px;
 }
 .vertical-info input[type="text"] {
-  width: 60%; /* Adjust input width */
+  width: 55%; /* Adjust input width */
   padding: 5px;
   box-sizing: border-box;
 }
@@ -519,8 +510,8 @@ i {
 
 .runtimeInfo {
   width: 98%;
-  max-height: 125px;
-  height:125px;
+  max-height: 120px;
+  height:120px;
   background-color: lightgray;
   margin-top: 5px;
   padding: 10px;
@@ -534,4 +525,10 @@ i {
 
 .error {
   color: red;
+}
+
+.WIP{
+  max-height:100px;
+  height:100px;
+  overflow-y:scroll;
 }

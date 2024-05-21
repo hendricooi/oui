@@ -25,7 +25,7 @@
                 <span>Lot ID:</span>
             </div>
             <div class='col-75'>
-                <input type='text' name='lotId' placeholder='Lot Id'style="height:25px; padding-left:5px;">
+                <input type='text' name='lotId' placeholder='Lot Id'style="height:25px; padding-left:5px; text-transform: uppercase;">
             </div>
         </div>
         <div class="button-container">
@@ -40,7 +40,7 @@ if(isset($_POST['submit'])) {
     $function = "LoadLotInputOK";
     $eqpId = $_SESSION['eqpId'];
     $data = array(
-        "LP1" => $_POST['lotId'],
+        "LP1" => strtoupper($_POST['lotId']),
         "Computer Name" => $_SERVER['REMOTE_ADDR'],
         "Badge ID" => $_SESSION['ID'],
         "User Name" => $_SESSION['username']
@@ -50,7 +50,7 @@ if(isset($_POST['submit'])) {
         // Handle the response if needed
         echo $response;
         $responseArray = json_decode($response, true);
-        echo ($responseArray['Value'] == 0) ? 'true' : 'false';
+        echo '<script>window.close();</script>';
     
 }
 ?>

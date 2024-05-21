@@ -25,7 +25,7 @@
                 <span>Lot ID:</span>
             </div>
             <div class='col-75' style='width:40%'>
-                <input type='text' name='lotId' placeholder='Lot Id'style="height:25px; padding-left:5px;">
+                <input type='text' name='lotId' placeholder='Lot Id'style="height:25px; padding-left:5px; text-transform: uppercase;">
             </div>
         </div>
         <div class='row' style="margin-top: 50px;">
@@ -67,7 +67,7 @@ if(isset($_POST['submit'])) {
     $function = "UnloadLot";
     $eqpId = $_SESSION['eqpId'];
     $info = array(
-        "Lot ID" => $_POST['lotId'],
+        "Lot ID" => strtoupper($_POST['lotId']),
         "TrackOut Qty" => "",
         "Badge ID" => $_SESSION['ID'],
         "User Name" => $_SESSION['username'],
@@ -76,6 +76,7 @@ if(isset($_POST['submit'])) {
         // Call the LoadLotRquest function with the provided parameters
         $response = UnloadLotRequestAfter($function,$info,$eqpId);
         // Handle the response if needed
+        $_SESSION['UnloadDialog'] = $response;
         echo " <script> UnloadDialogWindow(); </script>";
 }
 ?>

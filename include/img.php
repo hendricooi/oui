@@ -6,12 +6,10 @@ function EquipmentAvailability() {
             const itemExists = Object.keys(data).includes("<?php echo $key ?>");
             const imgDiv = document.getElementById('img-<?php echo $key ?>');
             if (itemExists) {
-                const blueStatusEntry = data["<?php echo $key ?>"].find(item => item.Function === "SetEquipmentStatus" && item.List1[0] === "BLUE");
-                if (blueStatusEntry) {
-                    imgDiv.src = '../img/blue.png';
-                } else {
-                    imgDiv.src = '../img/circle-xxl.png';
-                }
+                const colors = data["<?php echo $key ?>"].filter(item => item.Function === "SetEquipmentStatus").map(item => item.List1[0]);
+                imgDiv.src= colors[0].toUpperCase() === "BLUE" ? "../img/blue.png" : 
+                colors[0].toUpperCase() === "RED" ? "../img/circle-xxl.png" : 
+                colors[0].toUpperCase() === "GREEN" ? "../img/green.jpg" : "";
             } else {
                 imgDiv.src = '../img/clock.png';
             }

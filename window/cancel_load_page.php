@@ -25,7 +25,7 @@
                 <span>Lot ID:</span>
             </div>
             <div class='col-75'>
-                <input type='text' name='lotId' placeholder='Lot Id'style="height:25px; padding-left:5px;">
+                <input type='text' name='lotId' placeholder='Lot Id'style="height:25px; padding-left:5px; text-transform: uppercase;">
             </div>
         </div>
         <div class="button-container">
@@ -39,7 +39,7 @@
 if(isset($_POST['submit'])) {
     $eqpId = $_SESSION['eqpId'];
     $info = array(
-        "Lot ID" => $_POST['lotId'],
+        "Lot ID" => strtoupper($_POST['lotId']),
         "Badge ID" => $_SESSION['ID'],
         "User Name" => $_SESSION['username'],
         "Computer Name" => $_SERVER['REMOTE_ADDR']
@@ -47,7 +47,7 @@ if(isset($_POST['submit'])) {
         // Call the LoadLotRquest function with the provided parameters
         $response = CancelLotRequest($info, $eqpId);
         // Handle the response if needed
-        echo $response;
+        echo '<script>window.close();</script>';
 }
 ?>
 </body>
