@@ -87,10 +87,11 @@ if(isset($_POST['submit'])) {
         $trackOutQty = intval($_POST['trackOutQtyHidden']);
         $rejectValuesJSON = $_POST['rejectValuesHidden'];
         $rejectValues = json_decode($rejectValuesJSON, true);
+
         $data = array(
             "Lot ID" => $LotInfo[2][1],
-            "Computer Name" => $_SERVER['REMOTE_ADDR'],
             "User ID" => $_SESSION['username'],
+            "Computer Name" => $_SERVER['REMOTE_ADDR'],
             "Service Name"=>"TrackOutLot"
         );
         $wipdata = array(
@@ -113,6 +114,7 @@ if(isset($_POST['submit'])) {
             );
             // $rejectinfo
             $unloadDataResponse = UnloadLotData($unloaddata, $rejectValues, $eqpId);
+            print_r($unloadDataResponse);
         } else {
             echo "Error in updating WIP data";
         }

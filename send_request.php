@@ -208,7 +208,7 @@ function UnloadLotRequestAfter($function,$info, $eqpId) {
     return $response;
 }
 
-function UnloadWIPData($data,$wipdata, $eqpId) {
+function UnloadWIPData($data,$wipdata,$eqpId) {
     // Initialize cURL session
     $curl = curl_init();
 
