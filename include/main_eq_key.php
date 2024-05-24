@@ -129,9 +129,21 @@ function fetchData() {
         });
 }
 
-// Call fetchData initially
+// Call functions initially when page loads
 fetchData();
+updateLPStatus();
+updateEqStatus();
+updateLPButtonName();
+fetchTableData();
+RemoveItem();
+
+// Set an interval to refresh the data every 3000 milliseconds (3 seconds)
 setInterval(fetchData, 3000);
+setInterval(updateLPStatus, 3000);
+setInterval(updateEqStatus, 3000);
+setInterval(updateLPButtonName, 3000);
+setInterval(fetchTableData, 3000);
+setInterval(RemoveItem, 3000);
 
 function updateLPStatus() {
     fetch('../api/received_data.json')
@@ -156,11 +168,6 @@ function updateLPStatus() {
         });
 }
 
-
- updateLPStatus();
-
-setInterval(updateLPStatus, 3000);
-
 function updateEqStatus() {
     fetch('../api/received_data.json')
         .then(response => response.json())
@@ -183,9 +190,6 @@ function updateEqStatus() {
         
         });
 }
- updateEqStatus();
-
-setInterval(updateEqStatus, 3000);
 
 
 function updateLPButtonName() {
@@ -233,8 +237,7 @@ function updateLPButtonName() {
                 // Do nothing to suppress the error
             });
 }
-updateLPButtonName();
-setInterval(updateLPButtonName, 3000);
+
 
 function fetchTableData() {
     fetch('../api/received_data.json')
@@ -283,11 +286,6 @@ function fetchTableData() {
         });
 }
 // Call the function initially to fetch and display data
-fetchTableData();
-// Set an interval to refresh the data every 3000 milliseconds (3 seconds)
-setInterval(fetchTableData, 3000);
-
-
 
 function RemoveItem() {
     fetch('../api/received_data.json')
@@ -316,8 +314,7 @@ function RemoveItem() {
         })
         .catch(error => {});
 }
-RemoveItem();
-setInterval(RemoveItem, 3000);
+
 
 function resetData() {
     var resetIfLoggedIn = function() {

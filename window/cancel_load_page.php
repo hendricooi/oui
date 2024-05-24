@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="button-container">
-            <button type='submit' name='submit'>Ok</button>
+            <button type='submit' name='submit'>OK</button>
             <button onclick="closeWindow()">Cancel</button>
         </div>
     </form>

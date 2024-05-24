@@ -1,42 +1,51 @@
 <?php 
-$value = str_replace('-', '_', $value);
+$value_div = str_replace('-', '_', $value);
 ?>
 <div style='display: flex; flex-direction: column;'>
-        <div style='display: flex; margin-top:10px;'>
-            <div style='flex: 1;'>Equipment Status = </div>
-            <div style='margin-left: auto;'> User ID:<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?></div>
-        </div>
-
-        <div style='display: flex;'>
-            <div style='flex: 1;'>XSite= </div>
-            <div style='margin-left: auto;'> Badge ID:<?php echo isset($_SESSION['ID']) ? $_SESSION['ID'] : ''; ?></div>
-        </div> 
-
-        <div style='display: flex; flex-direction: column; margin-top:10px'>
-            <div>Lot status</div>
+<div class='container' style='margin-top:3px;  border: 1px solid #ccc; border-radius: 5px; padding: 10px;'>
+<div class="row">
+        <div class="label" style='width:140px;'>Equipment Status:</div>
+        <div class="label">XSite:</div>
+    </div>
+    <div class="row" style="display: flex; justify-content: center;width: 100%; padding-top:10px; font-size:30px;">
+        <div class="label" id="EqStatus-<?php echo $value_div ?>"></div>
+    </div>
+    <div class="row" style="margin-left:auto;">
+        <div class="label">UserId:</div>
+        <div class="label" style='width:75px'>Badge ID:</div>
+    </div>
+    <div class="row">
+        <div class="value"><?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?></div>
+        <div class="value"><?php echo isset($_SESSION['ID']) ? $_SESSION['ID'] : ''; ?></div>
+    </div>
+</div>
+        <div style='display: flex; flex-direction: column; margin-top:10px; border: 1px solid #ccc; border-radius: 5px; padding: 10px; height:70px;' >
+            <div style='font-weight:bold'>Lot status</div>
             <div style='display: flex; flex-direction: row;'>
                 <div style='flex: 1; margin-left:50px;'>
                     <div>Status</div>
-                    <input id='LpStatus-<?php echo $value ?>' type='text' value="" disabled>
+                    <input id='LpStatus-<?php echo $value_div ?>' type='text' disabled style='height: 20px; padding: 5px; font-size: 14px; border: 1px solid #ccc; border-radius: 5px;'>
                 </div>
                 <div style='flex: 1;'>
                     <div>Lot ID</div>
-                    <input type='text'>
+                    <input type='text' style='height: 20px; padding: 5px; font-size: 14px; border: 1px solid #ccc; border-radius: 5px;'>
                 </div>
                 <div style='flex: 1;'>
                     <div>Recipe</div>
-                    <input type='text'>
+                    <input type='text' style='height: 20px; padding: 5px; font-size: 14px; border: 1px solid #ccc; border-radius: 5px;'>
                 </div>
                 <div style='display: flex; flex-direction: column;'>
-                    <button class= class=eq-button; style='margin-bottom:5px;' onclick='openLoadPopoutWindow()'>Load</button>
-                    <button class= class=eq-button; onclick='openCancelLotPopoutWindow()'>Cancel Load</button>
+                    <button class= 'LButton' id="LoadButton-<?php echo $value_div ?>" onclick='checkLoggedIn()'></button>
+                    <button class= 'LButton' style="margin-top:5px;" onclick='openCancelLotPopoutWindow()'>Cancel Load</button>
                 </div>
             </div>
         </div>
-
-        <div style= margin-top:10px> Work in Progress(WIP) data</div>
+    <div style='margin-top:10px; border: 1px solid #ccc; border-radius: 5px; padding: 10px;'>
+        <div style="font-weight:bold;"> Work in Progress(WIP) data</div>
+        <div id="tableContainer-<?php echo $value_div ?>" style="max-height: 100px; overflow-y: auto; ">
         <table border=1 style='margin-top: 5px; width:100%;'>
-            <tr>
+        <thead style="position:sticky; border:1px solid #000; background-color:#fff; top:0;">
+            <tr style="height:20px;">
                 <th>LotID</th>
                 <th>Operation</th>
                 <th>Device</th>
@@ -47,20 +56,14 @@ $value = str_replace('-', '_', $value);
                 <th>User ID</th>
                 <th>Time In</th>
             </tr>
-            <tr>
-                <td data-label='LotID'>abc</td>
-                <td data-label='Operation'>cdef</td>
-                <td data-label='Device'>ewrew</td>
-                <td data-label='Package'>12312321</td>
-                <td data-label='TrackInQty'>12323</td>
-                <td data-label='Recipe'>rgbgrb</td>
-                <td data-label='Status'>rbgrb</td>
-                <td data-label='UserID'>ikiu</td>
-                <td data-label='TimeIn'>546454</td>
-            </tr>
-        </table>
+        </thead>
+        <tbody id="wipInfoTableBody-<?php echo $value_div ?>" style="height:60px;">
+            <!-- Table rows will be appended here -->
+        </tbody>
+    </table>
+</div>
 
-        <div style='display: flex; margin-top:20px; border:1px solid black; padding-right:5px;'>
+        <div style='display: flex; margin-top:10px; border:1px solid black; padding-right:5px;'>
             <div style='display: flex; flex-wrap: wrap; width:100%;'>
                 <button class=eq-button onclick='checkLoggedIn()'>Reserved 1</button>
                 <button class=eq-button>Reserved 2</button>
@@ -74,86 +77,286 @@ $value = str_replace('-', '_', $value);
                 <button class=eq-button>Reserved 10</button>
             </div>
             <div style='display:flex; width: 20%;'>
-                <button style='height:25px; width:175px; margin-top:15px;' onclick='unloadLotPopoutWindow()'>Unload</button>
+                <button class='LButton' style='margin-top:15px;' onclick='unloadLotPopoutWindow()'>Unload</button>
             </div>
         </div>
+    </div>
 
         <div style= margin-top:10px;> Run Time Info </div>
-        <div class="runtimeInfo" id= "runtimeInfo-<?php echo $value ?>">
+        <div class="runtimeInfo" id= "runtimeInfo-<?php echo $value_div?>">
         <!-- Content will be updated here -->
     </div>
     </div>
 
 <script>
-const appendedMessages_<?php echo $value ?> = new Set();
+const appendedMessages_<?php echo $value_div ?> = new Set();
 
 function fetchData() {
     fetch('../api/received_data.json')
         .then(response => response.json())
         .then(data => {
-            const messages = data["AOI-03"].filter(item => item.Function === "UIRTMessage").map(item => item.List2[0]);
-            const runtimeInfoDiv = document.getElementById('runtimeInfo-AOI-03');
-            if (messages.length > 0) {
-                messages.forEach(message => {
-                    if (!appendedMessages_<?php echo $value ?>.has(message)) {
-    // Check if message is already present in the DOM
-                        if (!runtimeInfoDiv.querySelector(`.message[data-content="${message}"]`)) {
-                            const messageDiv = document.createElement('div');
-                            messageDiv.textContent = message;
-                            messageDiv.dataset.content = message; // Set data attribute to identify message content
-                            console.log(message);
-                            messageDiv.classList.add('message'); // Add message class for styling
-                            // Check if message starts with "ERR" and add red color
-                            if (message.includes("ERR")) {
-                                messageDiv.classList.add('error'); // Add error class
-                            }
-                            // Insert new message before the first child of runtimeInfoDiv
-                            runtimeInfoDiv.insertBefore(messageDiv, runtimeInfoDiv.firstChild);
-                        }
-                        appendedMessages_<?php echo $value ?>.add(message); // Add message to the set of appended messages
+            const uirtMessages = data["<?php echo $value ?>"].filter(item => item.Function === "UIRTMessage").map(item => item.List2);
+            const runtimeInfoDiv = document.getElementById('runtimeInfo-<?php echo $value_div ?>');
+
+            // Clear the existing messages
+            runtimeInfoDiv.innerHTML = '';
+
+            if (uirtMessages.length > 0) {
+                // Flatten the array and sort messages in descending order
+                const allMessages = uirtMessages.flat().sort((a, b) => b.localeCompare(a));
+
+                allMessages.forEach(message => {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.textContent = message;
+                    messageDiv.dataset.content = message; // Set data attribute to identify message content
+                    messageDiv.classList.add('message'); // Add message class for styling
+                    // Check if message contains "ERR" and add error class
+                    if (message.includes("ERR")) {
+                        messageDiv.classList.add('error'); // Add error class
                     }
+                    // Append new message to runtimeInfoDiv
+                    runtimeInfoDiv.appendChild(messageDiv);
                 });
             } else {
- // Append message indicating no UIRT Messages
+                // Append message indicating no UIRT Messages
+                const noMessagesDiv = document.createElement('div');
+                noMessagesDiv.textContent = 'No UIRT Messages';
+                noMessagesDiv.classList.add('no-messages');
+                runtimeInfoDiv.appendChild(noMessagesDiv);
             }
         })
         .catch(error => {
-            console.error('Error fetching data:', error);
         });
 }
 
-// // Call fetchData initially
-// fetchData();
+// Call functions initially when page loads
+fetchData();
+updateLPStatus();
+updateEqStatus();
+updateLPButtonName();
+fetchTableData();
+RemoveItem();
 
-// // Call fetchData every 5 seconds
-// setInterval(fetchData, 5000);
-
+// Set an interval to refresh the data every 3000 milliseconds (3 seconds)
+setInterval(fetchData, 3000);
+setInterval(updateLPStatus, 3000);
+setInterval(updateEqStatus, 3000);
+setInterval(updateLPButtonName, 3000);
+setInterval(fetchTableData, 3000);
+setInterval(RemoveItem, 3000);
 
 function updateLPStatus() {
     fetch('../api/received_data.json')
         .then(response => response.json())
         .then(data => {
-            const lpStatusArray = data["AOI-03"].find(item => item.Function === "SetLPStatus");
+            const lpStatusArray = data["<?php echo $value ?>"].find(item => item.Function === "SetLPStatus");
+            const EqStatusDiv = document.getElementById('EqStatus');
             if (lpStatusArray) {
                 const lpStatus = lpStatusArray.List1;
-                const lpStatusInput = document.getElementById('LpStatus-<?php echo $value ?>');
+                const lpStatusInput = document.getElementById('LpStatus-<?php echo $value_div ?>');
                 if (lpStatusInput) {
-                    // lpStatusInput.setAttribute('value', lpStatus); // Set the value attribute directly
-                    document.getElementById('LpStatus-<?php echo $value ?>').value = lpStatus;
+                    lpStatusInput.value = lpStatus;
                 } else {
-                    console.error('Input field not found with ID:', 'LpStatus-<?php echo $value ?>');
+                    console.error('Input field not found with ID:', 'LpStatus-<?php echo $value_div ?>');
                 }
             } else {
-                console.error('No data found for SetLPStatus function');
+            
             }
         })
         .catch(error => {
-            console.error('Error fetching LP status data:', error);
+        
         });
 }
 
-// updateLPStatus();
+function updateEqStatus() {
+    fetch('../api/received_data.json')
+        .then(response => response.json())
+        .then(data => {
+            const messages = data["<?php echo $value ?>"].filter(item => item.Function === "SetEquipmentStatus").map(item => item.List2[0]);
+            const colors = data["<?php echo $value ?>"].filter(item => item.Function === "SetEquipmentStatus").map(item => item.List1[0]);
+            const EqStatusDiv = document.getElementById('EqStatus-<?php echo $value_div?>');
+            if (messages.length > 0) {
+                EqStatusDiv.innerHTML = ''; // Clear existing content
+                EqStatusDiv.innerHTML = messages[0]; // Assuming only one message is to be displayed
+                // Set font color based on color value
+                EqStatusDiv.style.color = colors[0] === "BLUE" ? "blue" : 
+                                        colors[0] === "RED" ? "red" : 
+                                        colors[0] === "GREEN" ? "green" : "black";
+            } else {
+            
+            }
+        })
+        .catch(error => {
+        
+        });
+}
 
-// // Call updateLPStatus every 5 seconds
-// setInterval(updateLPStatus, 5000);
+
+function updateLPButtonName() {
+    fetch('../api/received_data.json')
+        .then(response => response.json())
+        .then(data => {
+            const LpButton = data["<?php echo $value ?>"].filter(item => item.Function === "UISetLPButtonName").map(item => item.List2[0]);
+            const LpColors = data["<?php echo $value ?>"].filter(item => item.Function === "UISetLPButtonName").map(item => item.List1[0]);
+            const EqButtonDiv = document.getElementById('LoadButton-<?php echo $value_div ?>');
+            if(LpButton) {
+                EqButtonDiv.innerHTML = ''; // Clear existing content
+                EqButtonDiv.innerHTML = LpButton[0];
+                EqButtonDiv.style.fontSize = "15px";
+                EqButtonDiv.style.fontWeight = "bold";
+                EqButtonDiv.style.backgroundColor = LpColors[0] === "RED" ? "red" :"";  
+                EqButtonDiv.onclick = LpButton[0] === "LOAD" ? openLoadPopoutWindow : resetData;
+                if(LpButton[0]=== "LOAD"){
+                EqButtonDiv.addEventListener('mouseenter', function() {
+                // Change background color to darkgrey
+                this.style.backgroundColor = 'darkgrey';
+                });
+            
+                // Add event listener for mouseleave (hover out)
+                EqButtonDiv.addEventListener('mouseleave', function() {
+                // Reset background color
+                this.style.backgroundColor = ''; // or whatever the default background color is
+                });
+            }
+            else{
+                EqButtonDiv.addEventListener('mouseenter', function() {
+                // Change background color to darkgrey
+                this.style.backgroundColor = 'red';
+                });
+            
+                // Add event listener for mouseleave (hover out)
+                EqButtonDiv.addEventListener('mouseleave', function() {
+                // Reset background color
+                this.style.backgroundColor = 'red'; // or whatever the default background color is
+                });
+            }
+
+            }
+        })
+    .catch(error => {
+                // Do nothing to suppress the error
+            });
+}
+
+
+function fetchTableData() {
+    fetch('../api/received_data.json')
+        .then(response => response.json())
+        .then(data => {
+            // Extract the WIP info messages where the function is "SetWIPInfo"
+            const wipInfoMessages = data["<?php echo $value ?>"].filter(item => item.Function === "SetWIPInfo").flatMap(item => item.List1);
+            const wipInfoTableBody = document.getElementById('wipInfoTableBody-<?php echo $value_div ?>');
+            
+            // Clear existing table rows
+            wipInfoTableBody.innerHTML = '';
+
+            // Check if there are any WIP info messages to display
+            if (wipInfoMessages.length > 0) {
+                const uniqueEntries = []; // To store unique entries
+
+                // Iterate over each WIP info entry
+                wipInfoMessages.forEach(info => {
+                    // Check if the entry is already in the table
+                    const exists = uniqueEntries.some(entry => JSON.stringify(entry) === JSON.stringify(info));
+
+                    // If the entry does not exist, add it to the table and uniqueEntries
+                    if (!exists) {
+                        const row = document.createElement('tr');
+                        row.style.height = '25px';
+                        row.style.maxHeight = '25px';
+                        row.style.color = 'blue';
+
+                        // Iterate over each piece of data in the entry and create a table cell for it
+                        info.forEach(cellData => {
+                            const cell = document.createElement('td');
+                            cell.textContent = cellData;
+                            row.appendChild(cell);
+                        });
+
+                        // Append the completed row to the table body
+                        wipInfoTableBody.appendChild(row);
+
+                        // Add the entry to uniqueEntries
+                        uniqueEntries.push(info);
+                    }
+                });
+            }
+        })
+        .catch(error => {
+        });
+}
+// Call the function initially to fetch and display data
+
+function RemoveItem() {
+    fetch('../api/received_data.json')
+        .then(response => response.json())
+        .then(data => {
+            const RemoveData = data["<?php echo $value ?>"].filter(item => item.Function === "RemoveWIPItem").map(item => item.List1[0]);
+            if (RemoveData.length > 0) {
+                // If RemoveData has value, make a request to the PHP script
+                fetch('../include/removeWIP.php', {
+                    method: 'POST',
+                    body: JSON.stringify({ RemoveData: RemoveData }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('PHP script executed successfully');
+                    } else {
+                        console.error('Failed to execute PHP script');
+                    }
+                })
+                .catch(error =>{});
+            } else {
+            }
+        })
+        .catch(error => {});
+}
+
+
+function resetData() {
+    var resetIfLoggedIn = function() {
+    // Make an AJAX call to the PHP function
+    var eqpId<?php echo $value_div ?> = "<?php echo $value?>" // Set the equipment ID here
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "../send_json.php", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Request was successful, do something with the response if needed
+            var response = xhr.responseText;
+            console.log(response); // Output the response to the console
+        }
+    };
+    var data = JSON.stringify({
+        Function: "ResetLP",
+        Data: "LP1",
+        ActiveCCM: 1,
+        EqpId: eqpId
+    });
+    xhr.send(data);
+}
+checkLoggedIn(resetIfLoggedIn); 
+}
+
+function openLoadPopoutWindow() {
+    // Define the URL of the pop-out window
+    // Check if the user is logged in before opening the popout window
+
+    var openWindowIfLoggedIn = function() {
+    var url = "../window/load_page.php";
+
+    // Define the dimensions and position of the pop-out window
+    var width = 600;
+    var height = 400;
+    var left = (screen.width - width) / 2;
+    var top = (screen.height - height) / 2;
+
+    // Open the pop-out window with specified dimensions and position
+    window.open(url, "popoutWindow", "width=" + width + ", height=" + height + ", left=" + left + ", top=" + top);
+};
+checkLoggedIn(openWindowIfLoggedIn);
+}
 </script>
