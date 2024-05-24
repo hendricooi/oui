@@ -40,7 +40,7 @@
         </div>
 
         <div class="button-container row" style="display:block;">
-            <button type='submit' name='submit' >Ok</button>
+            <button type='submit' name='submit' >OK</button>
             <button onclick="closeWindow()">Cancel</button>
         </div>
     </form>
@@ -75,9 +75,15 @@ if(isset($_POST['submit'])) {
     );
         // Call the LoadLotRquest function with the provided parameters
         $response = UnloadLotRequestAfter($function,$info,$eqpId);
+        $responseArray = json_decode($response, true);
+        if ($responseArray['Value'] == 0) {
         // Handle the response if needed
         $_SESSION['UnloadDialog'] = $response;
         echo " <script> UnloadDialogWindow(); </script>";
+        }
+        else{
+            echo '<script>alert("The Lot is NOT in WIP list. Please enter another Lot.")</script>'; 
+        }
 }
 ?>
 </body>
