@@ -9,7 +9,7 @@
     <script src="./include/script_jquery.js" type="text/javascript"></script>
 
 
-    <title>AMD OUI : Penang OTA </title>
+    <title>EAP UI Dashboard </title>
 </head>
 <?php
 session_start();
@@ -37,12 +37,12 @@ include($path . "class/Section.class.php");
                 <a href="javascript:void(0);"></i>Sample #4</a>
             </li>
             
-            <img src="/oui/img/logo.jpg" alt="logo site" id="logo_site"/>
+            <img src="/oui/img/logo.jpeg" alt="logo site" id="logo_site"/>
             
         </ul>
     </div>
     <div id="dashboardContent" style="display: block;">
-        <h2 style="text-align: center; padding-top: 100px;padding-bottom: 20px;">Welcome to Shop Floor (OTA) Dashboard!</h2>
+        <h2 style="text-align: center; padding-top: 100px;padding-bottom: 20px;">Welcome to EAP UI Dashboard!</h2>
         <p style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
 
 <?php

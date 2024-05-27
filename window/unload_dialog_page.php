@@ -114,7 +114,7 @@ if(isset($_POST['submit'])) {
             );
             // $rejectinfo
             $unloadDataResponse = UnloadLotData($unloaddata, $rejectValues, $eqpId);
-            print_r($unloadDataResponse);
+            if (json_decode($unloadDataResponse, true)['Value'] == 0) echo "<script>window.close();</script>";
         } else {
             echo "Error in updating WIP data";
         }

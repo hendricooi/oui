@@ -76,12 +76,14 @@ if(isset($_POST['submit'])) {
         // Call the LoadLotRquest function with the provided parameters
         $response = UnloadLotRequestAfter($function,$info,$eqpId);
         $responseArray = json_decode($response, true);
+
         if ($responseArray['Value'] == 0) {
-        // Handle the response if needed
+            //if lot is in WIP list
         $_SESSION['UnloadDialog'] = $response;
         echo " <script> UnloadDialogWindow(); </script>";
         }
         else{
+            //if user enter lot that is not in WIP list
             echo '<script>alert("The Lot is NOT in WIP list. Please enter another Lot.")</script>'; 
         }
 }

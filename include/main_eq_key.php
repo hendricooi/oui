@@ -1,3 +1,4 @@
+
 <?php 
 $key_div = str_replace('-', '_', $key);
 ?>
@@ -5,7 +6,6 @@ $key_div = str_replace('-', '_', $key);
 <div class='container' style='margin-top:3px;  border: 1px solid #ccc; border-radius: 5px; padding: 10px;'>
 <div class="row">
         <div class="label" style='width:140px;'>Equipment Status:</div>
-        <div class="label">XSite:</div>
     </div>
     <div class="row" style="display: flex; justify-content: center;width: 100%; padding-top:10px; font-size:30px;">
         <div class="label" id="EqStatus-<?php echo $key_div ?>"></div>
@@ -40,6 +40,7 @@ $key_div = str_replace('-', '_', $key);
                 </div>
             </div>
         </div>
+        <div class="loading" id="loading-<?php echo $key_div?>"></div>
     <div style='margin-top:10px; border: 1px solid #ccc; border-radius: 5px; padding: 10px;'>
         <div style="font-weight:bold;"> Work in Progress(WIP) data</div>
         <div id="tableContainer-<?php echo $key_div ?>" style="max-height: 100px; overflow-y: auto; ">
@@ -285,36 +286,49 @@ function fetchTableData() {
         .catch(error => {
         });
 }
-// Call the function initially to fetch and display data
+function showLoading<?php echo $key_div ?>() {
+            document.getElementById('loading-<?php echo $key_div ?>').style.display = 'block';
+        }
 
-function RemoveItem() {
+        function hideLoading<?php echo $key_div ?>() {
+            document.getElementById('loading-<?php echo $key_div ?>').style.display = 'none';
+        }
+// Call the function initially to fetch and display data
+    function RemoveItem() {
     fetch('../api/received_data.json')
         .then(response => response.json())
         .then(data => {
             const RemoveData = data["<?php echo $key ?>"].filter(item => item.Function === "RemoveWIPItem").map(item => item.List1[0]);
             if (RemoveData.length > 0) {
                 // If RemoveData has value, make a request to the PHP script
-                fetch('../include/removeWIP.php', {
+                return fetch('../include/removeWIP.php', {
                     method: 'POST',
                     body: JSON.stringify({ RemoveData: RemoveData }),
                     headers: {
                         'Content-Type': 'application/json'
                     }
-                })
-                .then(response => {
-                    if (response.ok) {
-                        console.log('PHP script executed successfully');
-                    } else {
-                        console.error('Failed to execute PHP script');
-                    }
-                })
-                .catch(error =>{});
+                });
             } else {
+                return Promise.resolve(); // No RemoveData, resolve immediately
             }
         })
-        .catch(error => {});
+        .then(response => {
+            if (response && response.ok) {
+                console.log('PHP script executed successfully');
+                showLoading<?php echo $key_div ?>(); 
+                console.log('abc');// Show loading only if response is ok
+            } else if (response) {
+                console.error('Failed to execute PHP script');
+            }
+            return response;
+        })
+        .catch(error => {
+        })
+        .finally(() => {
+            // Hide loading spinner after 5 seconds
+            setTimeout(hideLoading<?php echo $key_div ?>, 5000);
+        });
 }
-
 
 function resetData() {
     var resetIfLoggedIn = function() {

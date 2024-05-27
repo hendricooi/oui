@@ -6,9 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" media="screen" href="/oui/style.css" />
 
-
-
-    <title>Cell Controller (OTA) Test </title>
+    <title>EAP UI </title>
 </head>
 <body>
 <?php

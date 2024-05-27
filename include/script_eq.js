@@ -3,6 +3,7 @@
 var i;
 var eqpId ="";
 var path = "C:/xampp/htdocs/oui/";
+// var path = "C:/wamp64/www/oui/";
 
 var ajaxRequestSent = false;
 

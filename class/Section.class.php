@@ -28,20 +28,43 @@ class Section{
                 // Initialize an empty string for the array items
                 $arrayItems = "";
                 foreach ($value as $subKey => $subitem) {
-                    $arrayItems .= "<li class=><span style='margin-left:30px; display:list-item;'><span onclick=\"openEQ('$eq','$subKey', this)\">$subKey</span></span></li>";
+                
+                    $arrayItems .= "<li class='subkey'><div style='display: flex;'>
+                                        <img id='img-$subKey'style='margin-left:50px; height:20px;'src='/oui/img/clock.png'>
+                                            <div style='margin-left:10px; width: -webkit-fill-available;' onclick=\"openEQ('$eq','$subKey', this)\">
+                                                <span>$subKey</span>
+                                        </div>
+                                    </li>";
                 }
                 $value = "<ul class='nested'>$arrayItems</ul>";
                 // Add the caret class if the value is an array
-                $keyElement = "<span class='caret'><a onclick=\" openEQ('$eq','$key', this)\">$key</a></span>";
-            } else if($value !== ""){
+                $keyElement = "<img id='img-$key'style='position:relative; top:5px; height:20px;'src='/oui/img/clock.png'></img> 
+                                    <span class='caret'>
+                                        <a onclick=\" openEQ('$eq','$key', this)\">$key</a>
+                                    </span>";
+            } 
+            
+            else if($value !== ""){
                 //if has 1 value only
-                $value = "<ul class='nested'><li><span style='margin-left:30px; display:list-item;'><span onclick=\"openEQ('$eq','$value', this)\">$value</span></span></li></ul>";
+                $value = "<ul class='nested'>
+                            <li>
+                            <span style='margin-left:30px; display:list-item;'>
+                                <span onclick=\"openEQ('$eq','$value', this)\">$value</span>
+                            </span>
+                            </li>
+                           </ul>";
                 $keyElement = "<span class='caret'><a onclick=\"openEQ('$eq','$key', this)\">$key</a></span>";
             }
+
+
             else {
                 // If value not an array
                 include('../include/img.php');
-                $keyElement = "<div style='display: flex;'><img id='img-$key'style='height:20px;'src='/oui/img/clock.png'><div style='margin-left:20px; width: -webkit-fill-available;' onclick=\"openEQ('$eq','$key', this)\"><span>$key</span>";
+                $keyElement = "<div style='display: flex;'>
+                                <img id='img-$key'style='height:20px;'src='/oui/img/clock.png'>
+                                    <div style='margin-left:20px; width: -webkit-fill-available;' onclick=\"openEQ('$eq','$key', this)\">
+                                        <span>$key</span>
+                                </div>";
             }
             // Add the key-value pair to the list view
             $listView .= "<li>$keyElement $value</li>";
