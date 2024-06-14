@@ -43,7 +43,7 @@ $key_div = str_replace('-', '_', $key);
         <div class="loading" id="loading-<?php echo $key_div?>"></div>
     <div style='margin-top:10px; border: 1px solid #ccc; border-radius: 5px; padding: 10px;'>
         <div style="font-weight:bold;"> Work in Progress(WIP) data</div>
-        <div id="tableContainer-<?php echo $key_div ?>" style="max-height: 100px; overflow-y: auto; ">
+        <div id="tableContainer-<?php echo $key_div ?>" style="max-height: 100px; height:100px; overflow-y: auto; ">
         <table border=1 style='margin-top: 5px; width:100%;'>
         <thead style="position:sticky; border:1px solid #000; background-color:#fff; top:0;">
             <tr style="height:20px;">
@@ -64,7 +64,7 @@ $key_div = str_replace('-', '_', $key);
     </table>
 </div>
 
-        <div style='display: flex; margin-top:10px; border:1px solid black; padding-right:5px;'>
+        <div style='display: flex; margin-top:5px; border:1px solid black; padding-right:5px;'>
             <div style='display: flex; flex-wrap: wrap; width:100%;'>
                 <button class=eq-button onclick='checkLoggedIn()'>Reserved 1</button>
                 <button class=eq-button>Reserved 2</button>
@@ -83,7 +83,7 @@ $key_div = str_replace('-', '_', $key);
         </div>
     </div>
 
-        <div style= margin-top:10px;> Run Time Info </div>
+        <div style= "margin-top:10px; font-weight:bold;"> Run Time Info </div>
         <div class="runtimeInfo" id= "runtimeInfo-<?php echo $key_div?>">
         <!-- Content will be updated here -->
     </div>
@@ -92,10 +92,35 @@ $key_div = str_replace('-', '_', $key);
 <script>
 const appendedMessages_<?php echo $key_div ?> = new Set();
 
+
+// Call functions initially when page loads
+fetchData();
+updateLPStatus();
+updateEqStatus();
+updateLPButtonName();
+fetchTableData();
+RemoveItem();
+
+// Set an interval to refresh the data every 3000 milliseconds (3 seconds)
+setInterval(fetchData, 3000);
+setInterval(updateLPStatus, 3000);
+setInterval(updateEqStatus, 3000);
+setInterval(updateLPButtonName, 3000);
+setInterval(fetchTableData, 3000);
+setInterval(RemoveItem, 3000);
+
+//Run time info message
 function fetchData() {
-    fetch('../api/received_data.json')
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => {
+        controller.abort();
+    }, 2500); //
+
+    fetch('../api/received_data.json', { signal: controller.signal })
         .then(response => response.json())
         .then(data => {
+            clearTimeout(timeoutId);
+
             const uirtMessages = data["<?php echo $key ?>"].filter(item => item.Function === "UIRTMessage").map(item => item.List2);
             const runtimeInfoDiv = document.getElementById('runtimeInfo-<?php echo $key_div ?>');
 
@@ -127,26 +152,18 @@ function fetchData() {
             }
         })
         .catch(error => {
+            if (error.name === 'AbortError') {
+            } else {
+            }
         });
 }
 
-// Call functions initially when page loads
-fetchData();
-updateLPStatus();
-updateEqStatus();
-updateLPButtonName();
-fetchTableData();
-RemoveItem();
-
-// Set an interval to refresh the data every 3000 milliseconds (3 seconds)
-setInterval(fetchData, 3000);
-setInterval(updateLPStatus, 3000);
-setInterval(updateEqStatus, 3000);
-setInterval(updateLPButtonName, 3000);
-setInterval(fetchTableData, 3000);
-setInterval(RemoveItem, 3000);
-
+//Load Port status
 function updateLPStatus() {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => {
+        controller.abort();
+    }, 2500); //
     fetch('../api/received_data.json')
         .then(response => response.json())
         .then(data => {
@@ -169,7 +186,12 @@ function updateLPStatus() {
         });
 }
 
+//Equipment Status
 function updateEqStatus() {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => {
+        controller.abort();
+    }, 2500); //
     fetch('../api/received_data.json')
         .then(response => response.json())
         .then(data => {
@@ -192,8 +214,12 @@ function updateEqStatus() {
         });
 }
 
-
+//Load button name (LOAD/RESET)
 function updateLPButtonName() {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => {
+        controller.abort();
+    }, 2500); //
     fetch('../api/received_data.json')
         .then(response => response.json())
         .then(data => {
@@ -239,8 +265,12 @@ function updateLPButtonName() {
             });
 }
 
-
+//WIP table data
 function fetchTableData() {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => {
+        controller.abort();
+    }, 2500); //
     fetch('../api/received_data.json')
         .then(response => response.json())
         .then(data => {
@@ -253,6 +283,7 @@ function fetchTableData() {
 
             // Check if there are any WIP info messages to display
             if (wipInfoMessages.length > 0) {
+                showLoading<?php echo $key_div ?>(); // Show loading indicator when there are messages to display
                 const uniqueEntries = []; // To store unique entries
 
                 // Iterate over each WIP info entry
@@ -281,20 +312,28 @@ function fetchTableData() {
                         uniqueEntries.push(info);
                     }
                 });
+
+                hideLoading<?php echo $key_div ?>(); // Hide loading indicator after data processing is done
             }
         })
         .catch(error => {
+            hideLoading<?php echo $key_div ?>(); // Hide loading indicator if there is an error
         });
 }
 function showLoading<?php echo $key_div ?>() {
             document.getElementById('loading-<?php echo $key_div ?>').style.display = 'block';
         }
 
-        function hideLoading<?php echo $key_div ?>() {
+function hideLoading<?php echo $key_div ?>() {
             document.getElementById('loading-<?php echo $key_div ?>').style.display = 'none';
         }
-// Call the function initially to fetch and display data
-    function RemoveItem() {
+
+//Remove WIP table data
+function RemoveItem() {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => {
+        controller.abort();
+    }, 2500); //
     fetch('../api/received_data.json')
         .then(response => response.json())
         .then(data => {
@@ -314,9 +353,8 @@ function showLoading<?php echo $key_div ?>() {
         })
         .then(response => {
             if (response && response.ok) {
-                console.log('PHP script executed successfully');
                 showLoading<?php echo $key_div ?>(); 
-                console.log('abc');// Show loading only if response is ok
+                console.log('PHP script executed successfully');
             } else if (response) {
                 console.error('Failed to execute PHP script');
             }
@@ -326,11 +364,16 @@ function showLoading<?php echo $key_div ?>() {
         })
         .finally(() => {
             // Hide loading spinner after 5 seconds
-            setTimeout(hideLoading<?php echo $key_div ?>, 5000);
+            setTimeout(hideLoading<?php echo $key_div ?>, 8000);
         });
 }
 
+//Reset Load Port
 function resetData() {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => {
+        controller.abort();
+    }, 2500); //
     var resetIfLoggedIn = function() {
     // Make an AJAX call to the PHP function
     var eqpId<?php echo $key_div ?> = "<?php echo $key?>" // Set the equipment ID here
@@ -373,4 +416,19 @@ function openLoadPopoutWindow() {
 };
 checkLoggedIn(openWindowIfLoggedIn);
 }
+
+async function requestWakeLock() {
+    try {
+        const wakeLock = await navigator.wakeLock.request('screen');
+        wakeLock.addEventListener('release', () => {
+            console.log('Wake Lock was released');
+        });
+        console.log('Wake Lock is active');
+    } catch (err) {
+        console.error(`${err.name}, ${err.message}`);
+    }
+}
+
+// Request the wake lock to prevent the device from sleeping
+requestWakeLock();
 </script>

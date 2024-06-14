@@ -20,8 +20,9 @@
 
 <div class="row" style="display:flex; justify-content:space-between;margin: 20px 200px 20px 25px;">
     <h2>Reject Info</h2>  
-    <h2> Lot Info </h2>
+    <h2> Lot Info </h2>  
 </div>
+<div class="loadingLoad" id="loadingUnload"></div> 
 <form id="UnloadDialogForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
     <div class="container-wip">
         <div class="table-container">
@@ -70,13 +71,13 @@
         <input style="padding:5px; margin-left:40px;" type="text" id="rejectCode" name="rejectCode">
     </div>
 
-    <div style="margin-top:45px; margin-left:25px;">
+    <div style="margin-top:30px; margin-left:25px;">
         <h4>Others Info</h4>
         <button type="button" style="padding:5px;width:100px; height:30px; margin:10px;" id="WIPButton" onclick="openWIPWindow()">WIP Data</button>
     </div>
 
-    <div class="buttons" style="padding:30px;">
-        <button id="okButton" name="submit" type="submit">OK</button>
+    <div class="buttons">
+        <button id="okButton" name="submit" onclick="showLoading()" type="submit">OK</button>
         <button type="button" id="cancelButton" onclick="window.close()">Cancel</button>
     </div>
 </form>
@@ -231,7 +232,9 @@ function passTrackOutQty() {
     let trackOutQty = document.getElementById('Track Out Qty').value;
     document.getElementById('trackOutQtyHidden').value = trackOutQty;
 }
-
+function showLoading() {
+            document.getElementById('loadingUnload').style.display = 'block';
+        }
 document.getElementById('UnloadDialogForm').addEventListener('submit', function(event) {
     collectRejects();
     passTrackOutQty();
@@ -239,6 +242,8 @@ document.getElementById('UnloadDialogForm').addEventListener('submit', function(
 
 document.getElementById('rejectCode').addEventListener('input', searchData);
 setupInputListeners();
+
+
 </script>
 </body>
 </html>

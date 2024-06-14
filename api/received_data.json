@@ -5,69 +5,9 @@
             "List1": null,
             "List2": null,
             "Value": null
-        },
-        {
-            "Function": "LostConnection",
-            "List1": null,
-            "List2": null,
-            "Value": null
-        },
-        {
-            "Function": "AMDSiteName",
-            "List1": null,
-            "List2": null,
-            "Value": null
-        },
-        {
-            "Function": "EnableKeyIn",
-            "List1": null,
-            "List2": null,
-            "Value": "1"
-        },
-        {
-            "Function": "TCPConnected",
-            "List1": null,
-            "List2": null,
-            "Value": null
-        },
-        {
-            "Function": "DeveloperLogin",
-            "List1": null,
-            "List2": null,
-            "Value": "1"
-        },
-        {
-            "Function": "HSMSSelected",
-            "List1": null,
-            "List2": null,
-            "Value": null
-        },
-        {
-            "Function": "BarcodeIDKeystrokeDelay",
-            "List1": null,
-            "List2": null,
-            "Value": "200"
-        },
-        {
-            "Function": "EnableDebugConsole",
-            "List1": null,
-            "List2": null,
-            "Value": "0"
-        },
-        {
-            "Function": "BypassNewXsite",
-            "List1": null,
-            "List2": null,
-            "Value": "0"
-        },
-        {
-            "Function": null,
-            "List1": null,
-            "List2": null,
-            "Value": null
         }
     ],
-    "AOI-03": [
+    "AFI-05": [
         {
             "Function": "SetEquipmentStatus",
             "List1": [
@@ -79,541 +19,47 @@
             "Value": 0
         },
         {
-            "Function": "UIRTMessage",
+            "Function": "CC Request Clear UI",
             "List1": [
-                "BLUE-INF"
+                ""
             ],
             "List2": [
-                "15-May-2024 14:04:29 : INF - <CC> initialization is successful.",
-                "15-May-2024 14:04:29 : INF - <CC> INPUT is Idle.",
-                "15-May-2024 14:04:29 : INF - <CC> initialization is successful.",
-                "15-May-2024 14:06:55 : ERR - {50007} <CC> Lot, <LOTA>, is processing at AOI-03. Please scan another Lot.",
-                "15-May-2024 14:06:55 : INF - Bypass EChecklistInfo Status validation.",
-                "15-May-2024 14:06:55 : INF - <CC> INPUT is Idle.",
-                "15-May-2024 14:08:42 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "15-May-2024 14:08:41 : INF - Bypass EChecklistInfo Status validation.",
-                "15-May-2024 14:08:42 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:23:33 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:23:33 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:25:52 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:25:54 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:25:55 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 10:44:57 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 10:47:05 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 10:47:05 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 11:15:14 : ERR - {82000} Unload lot fail. <CC> Failed Unload Lot, []. Reason:  <CCM> ERROR: OUI message format is NOT correct. Please contact IT.",
-                "21-May-2024 11:15:14 : INF - Bypass LMS checking",
-                "21-May-2024 11:21:01 : INF - <CC> Lot <LOTA> is unloaded by user <1234>.",
-                "21-May-2024 11:21:00 : INF - Bypass LMS checking",
-                "21-May-2024 11:21:01 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 11:21:14 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 11:21:15 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 11:26:46 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 11:26:46 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 11:28:51 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 11:28:48 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 11:28:50 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 11:21:17 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 11:44:29 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 11:46:30 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 11:44:29 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 11:46:27 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 11:46:31 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 12:45:50 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 12:46:12 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 12:45:50 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 14:33:38 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 12:46:17 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 12:46:14 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 14:33:38 : ERR - {50007} <CC> Lot, <LOTA>, is processing at AOI-03. Please scan another Lot.",
-                "21-May-2024 14:33:38 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 14:33:59 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 14:33:59 : ERR - {50007} <CC> Lot, <LOTA>, is processing at AOI-03. Please scan another Lot.",
-                "21-May-2024 14:33:59 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 14:52:26 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 14:52:28 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 14:52:31 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 14:57:32 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 14:57:32 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:01:54 : INF - <CC> Lot <LOTB> has been removed from WIP data.",
-                "21-May-2024 15:01:36 : ERR - {50021} <CC> Failed Lot Cancel for Lot, [LOTA]. Reason:  <CC> Failed Cancel Lot for Lot, [LOTA]. Reason: The Lot is NOT in WIP list.",
-                "21-May-2024 15:00:33 : ERR - {50021} <CC> Failed Lot Cancel for Lot, [LOTA]. Reason:  <CC> Failed Cancel Lot for Lot, [LOTA]. Reason: The Lot is NOT in WIP list.",
-                "21-May-2024 15:02:18 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:01:54 : INF - <CC> Lot <LOTB> is canceled by user <1234>.",
-                "21-May-2024 15:02:14 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:02:22 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:03:06 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:03:06 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:04:29 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:04:34 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:04:31 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:05:34 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:05:34 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:07:47 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:07:49 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:07:51 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:08:06 : ERR - {50007} <CC> Lot, <LOTA>, is processing at AOI-03. Please scan another Lot.",
-                "21-May-2024 15:08:16 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:08:06 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:08:06 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:08:16 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:09:33 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:09:29 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:09:34 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:09:41 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:09:41 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:10:10 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:10:25 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:10:16 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:10:13 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:10:25 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:17:42 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:17:45 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:18:18 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:17:46 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:18:18 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:18:32 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:18:36 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:18:58 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:18:38 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:18:58 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:19:10 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:19:07 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:19:04 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:20:20 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:20:28 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:20:20 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:20:32 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:20:30 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:22:13 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:22:27 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:22:13 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:22:29 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:23:33 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:22:31 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:23:33 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:25:52 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:25:54 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:26:42 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:25:55 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:27:26 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:26:42 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:27:29 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:27:27 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:28:57 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:29:00 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:29:04 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:29:09 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:29:09 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:29:20 : INF - <CC> Lot <LOTB> has been removed from WIP data.",
-                "21-May-2024 15:29:20 : INF - <CC> Lot <LOTB> is canceled by user <12345>.",
-                "21-May-2024 15:30:15 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:30:17 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:30:19 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 16:05:56 : INF - Bypass LMS checking",
-                "21-May-2024 16:05:57 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 16:05:57 : INF - <CC> Lot <LOTA> is unloaded by user <12345>.",
-                "21-May-2024 16:09:43 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 16:09:46 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 16:09:48 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 16:10:08 : INF - Bypass LMS checking",
-                "21-May-2024 16:10:08 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 16:10:08 : INF - <CC> Lot <LOTA> is unloaded by user <12345>.",
-                "21-May-2024 16:10:21 : INF - Bypass EChecklistInfo Status validation.",
-                "24-May-2024 10:17:59 : INF - Bypass EChecklistInfo Status validation.",
-                "24-May-2024 10:18:02 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "24-May-2024 10:18:04 : INF - <CC> INPUT is Idle.",
-                "24-May-2024 10:18:09 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "24-May-2024 10:18:09 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "24-May-2024 10:18:18 : INF - Bypass EChecklistInfo Status validation.",
-                "24-May-2024 10:18:21 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "24-May-2024 10:18:21 : INF - <CC> INPUT is Idle.",
-                "24-May-2024 10:19:45 : ERR - {50018} Unload lot fail.<CC> Failed Unload Lot, [LOTB]. Reason:  <CC> Failed Unload Lot, [LOTB]. Reason: The Lot is NOT in WIP list.",
-                "24-May-2024 10:22:35 : ERR - {50018} Unload lot fail.<CC> Failed Unload Lot, [LOTB]. Reason:  <CC> Failed Unload Lot, [LOTB]. Reason: The Lot is NOT in WIP list.",
-                "24-May-2024 10:24:17 : ERR - {50018} Unload lot fail.<CC> Failed Unload Lot, [LOTB]. Reason:  <CC> Failed Unload Lot, [LOTB]. Reason: The Lot is NOT in WIP list.",
-                "24-May-2024 10:24:38 : ERR - {50018} Unload lot fail.<CC> Failed Unload Lot, [LOTC]. Reason:  <CC> Failed Unload Lot, [LOTC]. Reason: The Lot is NOT in WIP list.",
-                "24-May-2024 10:39:08 : INF - Bypass LMS checking",
-                "24-May-2024 10:39:10 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "24-May-2024 10:39:10 : INF - <CC> Lot <LOTA> is unloaded by user <12345>.",
-                "24-May-2024 11:07:16 : INF - Bypass EChecklistInfo Status validation.",
-                "24-May-2024 11:07:19 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "24-May-2024 11:07:21 : INF - <CC> INPUT is Idle.",
-                "24-May-2024 11:07:44 : ERR - {50021} <CC> Failed Lot Cancel for Lot, [LOTB]. Reason:  <CC> Failed Cancel Lot for Lot, [LOTB]. Reason: The Lot is NOT in WIP list.",
-                "24-May-2024 11:07:58 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "24-May-2024 11:07:58 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:08:16 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:08:06 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:08:06 : ERR - {50007} <CC> Lot, <LOTA>, is processing at AOI-03. Please scan another Lot.",
-                "21-May-2024 15:08:16 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:08:06 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:09:34 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:09:41 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:09:29 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:09:33 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:10:16 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:10:10 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:10:13 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:09:41 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:10:25 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:17:45 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:10:25 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:17:42 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:18:18 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:17:46 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:18:18 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:18:32 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:18:38 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:18:58 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:18:58 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:18:36 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:19:07 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:19:10 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:19:04 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:20:20 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:20:20 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:20:28 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:20:30 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:22:13 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:20:32 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:22:13 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:22:27 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:22:29 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:22:31 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:23:33 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:23:33 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:25:52 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:25:55 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:25:54 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:27:26 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:26:42 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:26:42 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:27:29 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:27:27 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:29:00 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:29:04 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:29:09 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:29:09 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:28:57 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:29:20 : INF - <CC> Lot <LOTB> has been removed from WIP data.",
-                "21-May-2024 15:30:15 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:29:20 : INF - <CC> Lot <LOTB> is canceled by user <12345>.",
-                "21-May-2024 15:30:19 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:30:17 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 16:05:57 : INF - <CC> Lot <LOTA> is unloaded by user <12345>.",
-                "21-May-2024 16:05:56 : INF - Bypass LMS checking",
-                "21-May-2024 16:05:57 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 16:09:43 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 16:09:46 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 16:09:48 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 16:10:08 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 16:10:08 : INF - Bypass LMS checking",
-                "21-May-2024 16:10:08 : INF - <CC> Lot <LOTA> is unloaded by user <12345>.",
-                "21-May-2024 16:10:21 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 16:10:28 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 16:10:25 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 16:10:50 : INF - Bypass LMS checking",
-                "21-May-2024 16:10:51 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 16:10:51 : INF - <CC> Lot <LOTA> is unloaded by user <12345>.",
-                "23-May-2024 10:17:25 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "23-May-2024 10:17:24 : INF - Bypass EChecklistInfo Status validation.",
-                "23-May-2024 10:19:03 : INF - Bypass LMS checking",
-                "23-May-2024 10:17:27 : INF - <CC> INPUT is Idle.",
-                "23-May-2024 10:19:03 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "23-May-2024 10:19:03 : INF - <CC> Lot <LOTA> is unloaded by user <12345>.",
-                "24-May-2024 10:17:59 : INF - Bypass EChecklistInfo Status validation.",
-                "24-May-2024 10:18:02 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "24-May-2024 10:18:09 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "24-May-2024 10:18:04 : INF - <CC> INPUT is Idle.",
-                "24-May-2024 10:18:09 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "24-May-2024 10:18:18 : INF - Bypass EChecklistInfo Status validation.",
-                "24-May-2024 10:18:21 : INF - <CC> INPUT is Idle.",
-                "24-May-2024 10:18:21 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "24-May-2024 10:19:45 : ERR - {50018} Unload lot fail.<CC> Failed Unload Lot, [LOTB]. Reason:  <CC> Failed Unload Lot, [LOTB]. Reason: The Lot is NOT in WIP list.",
-                "24-May-2024 10:22:35 : ERR - {50018} Unload lot fail.<CC> Failed Unload Lot, [LOTB]. Reason:  <CC> Failed Unload Lot, [LOTB]. Reason: The Lot is NOT in WIP list.",
-                "24-May-2024 10:24:38 : ERR - {50018} Unload lot fail.<CC> Failed Unload Lot, [LOTC]. Reason:  <CC> Failed Unload Lot, [LOTC]. Reason: The Lot is NOT in WIP list.",
-                "24-May-2024 10:24:17 : ERR - {50018} Unload lot fail.<CC> Failed Unload Lot, [LOTB]. Reason:  <CC> Failed Unload Lot, [LOTB]. Reason: The Lot is NOT in WIP list.",
-                "24-May-2024 10:39:08 : INF - Bypass LMS checking",
-                "24-May-2024 10:39:10 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "24-May-2024 10:39:10 : INF - <CC> Lot <LOTA> is unloaded by user <12345>.",
-                "24-May-2024 11:07:19 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "24-May-2024 11:07:16 : INF - Bypass EChecklistInfo Status validation.",
-                "24-May-2024 11:07:21 : INF - <CC> INPUT is Idle.",
-                "24-May-2024 11:07:58 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "24-May-2024 11:07:44 : ERR - {50021} <CC> Failed Lot Cancel for Lot, [LOTB]. Reason:  <CC> Failed Cancel Lot for Lot, [LOTB]. Reason: The Lot is NOT in WIP list.",
-                "24-May-2024 11:07:58 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "24-May-2024 14:37:49 : INF - Bypass EChecklistInfo Status validation.",
-                "24-May-2024 14:37:52 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "24-May-2024 14:37:56 : INF - <CC> INPUT is Idle.",
-                "24-May-2024 14:39:32 : INF - Bypass EChecklistInfo Status validation.",
-                "24-May-2024 14:39:38 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "24-May-2024 14:39:41 : INF - <CC> INPUT is Idle.",
-                "24-May-2024 14:39:48 : INF - Bypass EChecklistInfo Status validation.",
-                "24-May-2024 14:39:53 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "24-May-2024 14:39:56 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:09:41 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:18:58 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:18:18 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:10:16 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:18:38 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:17:45 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:10:13 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:10:25 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:18:18 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:17:46 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:18:58 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:17:42 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:10:10 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:19:04 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:18:32 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:18:36 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:10:25 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:19:07 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:19:10 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:20:20 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:20:20 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:20:28 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:20:30 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:20:32 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:22:13 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:22:13 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:22:27 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:22:29 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:22:31 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:25:52 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:25:54 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:23:33 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:23:33 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:26:42 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:25:55 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:26:42 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:27:26 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:28:57 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:27:27 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:29:00 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 15:27:29 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:29:04 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 15:29:09 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:29:20 : INF - <CC> Lot <LOTB> has been removed from WIP data.",
-                "21-May-2024 15:29:09 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "21-May-2024 15:29:20 : INF - <CC> Lot <LOTB> is canceled by user <12345>.",
-                "21-May-2024 15:30:15 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 15:30:17 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 16:05:57 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 15:30:19 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 16:05:56 : INF - Bypass LMS checking",
-                "21-May-2024 16:09:43 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 16:05:57 : INF - <CC> Lot <LOTA> is unloaded by user <12345>.",
-                "21-May-2024 16:09:46 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 16:09:48 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 16:10:08 : INF - Bypass LMS checking",
-                "21-May-2024 16:10:08 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 16:10:21 : INF - Bypass EChecklistInfo Status validation.",
-                "21-May-2024 16:10:08 : INF - <CC> Lot <LOTA> is unloaded by user <12345>.",
-                "21-May-2024 16:10:28 : INF - <CC> INPUT is Idle.",
-                "21-May-2024 16:10:25 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "21-May-2024 16:10:51 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "21-May-2024 16:10:50 : INF - Bypass LMS checking",
-                "21-May-2024 16:10:51 : INF - <CC> Lot <LOTA> is unloaded by user <12345>.",
-                "23-May-2024 10:17:24 : INF - Bypass EChecklistInfo Status validation.",
-                "23-May-2024 10:17:27 : INF - <CC> INPUT is Idle.",
-                "23-May-2024 10:17:25 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "23-May-2024 10:19:03 : INF - Bypass LMS checking",
-                "23-May-2024 10:19:03 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "24-May-2024 10:17:59 : INF - Bypass EChecklistInfo Status validation.",
-                "23-May-2024 10:19:03 : INF - <CC> Lot <LOTA> is unloaded by user <12345>.",
-                "24-May-2024 10:18:04 : INF - <CC> INPUT is Idle.",
-                "24-May-2024 10:18:02 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "24-May-2024 10:18:18 : INF - Bypass EChecklistInfo Status validation.",
-                "24-May-2024 10:18:09 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "24-May-2024 10:18:09 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "24-May-2024 10:18:21 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "24-May-2024 10:18:21 : INF - <CC> INPUT is Idle.",
-                "24-May-2024 10:19:45 : ERR - {50018} Unload lot fail.<CC> Failed Unload Lot, [LOTB]. Reason:  <CC> Failed Unload Lot, [LOTB]. Reason: The Lot is NOT in WIP list.",
-                "24-May-2024 10:22:35 : ERR - {50018} Unload lot fail.<CC> Failed Unload Lot, [LOTB]. Reason:  <CC> Failed Unload Lot, [LOTB]. Reason: The Lot is NOT in WIP list.",
-                "24-May-2024 10:24:17 : ERR - {50018} Unload lot fail.<CC> Failed Unload Lot, [LOTB]. Reason:  <CC> Failed Unload Lot, [LOTB]. Reason: The Lot is NOT in WIP list.",
-                "24-May-2024 10:24:38 : ERR - {50018} Unload lot fail.<CC> Failed Unload Lot, [LOTC]. Reason:  <CC> Failed Unload Lot, [LOTC]. Reason: The Lot is NOT in WIP list.",
-                "24-May-2024 10:39:08 : INF - Bypass LMS checking",
-                "24-May-2024 10:39:10 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "24-May-2024 10:39:10 : INF - <CC> Lot <LOTA> is unloaded by user <12345>.",
-                "24-May-2024 11:07:16 : INF - Bypass EChecklistInfo Status validation.",
-                "24-May-2024 11:07:19 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "24-May-2024 11:07:21 : INF - <CC> INPUT is Idle.",
-                "24-May-2024 14:37:49 : INF - Bypass EChecklistInfo Status validation.",
-                "24-May-2024 11:07:58 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "24-May-2024 11:07:44 : ERR - {50021} <CC> Failed Lot Cancel for Lot, [LOTB]. Reason:  <CC> Failed Cancel Lot for Lot, [LOTB]. Reason: The Lot is NOT in WIP list.",
-                "24-May-2024 11:07:58 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
-                "24-May-2024 14:37:52 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "24-May-2024 14:39:38 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "24-May-2024 14:39:32 : INF - Bypass EChecklistInfo Status validation.",
-                "24-May-2024 14:37:56 : INF - <CC> INPUT is Idle.",
-                "24-May-2024 14:39:41 : INF - <CC> INPUT is Idle.",
-                "24-May-2024 14:39:48 : INF - Bypass EChecklistInfo Status validation.",
-                "24-May-2024 14:39:53 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "24-May-2024 14:39:56 : INF - <CC> INPUT is Idle.",
-                "24-May-2024 14:41:46 : INF - <CC> Lot <LOTC> has been removed from WIP data.",
-                "24-May-2024 14:41:46 : INF - <CC> Lot <LOTC> is canceled by user <12345>.",
-                "24-May-2024 14:42:24 : ERR - {50018} Unload lot fail.<CC> Failed Unload Lot, [LOTC]. Reason:  <CC> Failed Unload Lot, [LOTC]. Reason: The Lot is NOT in WIP list.",
-                "24-May-2024 14:44:06 : INF - Bypass LMS checking",
-                "24-May-2024 14:44:09 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "24-May-2024 14:44:09 : INF - <CC> Lot <LOTA> is unloaded by user <12345>.",
-                "24-May-2024 14:51:54 : INF - Bypass EChecklistInfo Status validation.",
-                "24-May-2024 14:51:58 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "24-May-2024 14:52:03 : INF - <CC> INPUT is Idle.",
-                "24-May-2024 15:06:33 : ERR - {50021} <CC> Failed Lot Cancel for Lot, [LOTC]. Reason:  <CC> Failed Cancel Lot for Lot, [LOTC]. Reason: The Lot is NOT in WIP list.",
-                "27-May-2024 11:37:19 : INF - <CC> Lot <LOTB> has been removed from WIP data.",
-                "27-May-2024 11:37:19 : INF - <CC> Lot <LOTB> is canceled by user <121212122>.",
-                "27-May-2024 12:08:07 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "27-May-2024 12:08:07 : INF - <CC> Lot <LOTA> is canceled by user <121212122>.",
-                "27-May-2024 12:09:23 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 12:09:26 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 12:09:28 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 12:09:34 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "27-May-2024 12:09:34 : INF - <CC> Lot <LOTA> is canceled by user <121212122>.",
-                "27-May-2024 12:14:29 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 12:14:31 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 12:14:33 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 12:14:34 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 12:14:34 : ERR - {50007} <CC> Lot, <LOTA>, is processing at AOI-03. Please scan another Lot.",
-                "27-May-2024 12:14:34 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 12:14:40 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "27-May-2024 12:14:40 : INF - <CC> Lot <LOTA> is canceled by user <121212122>.",
-                "27-May-2024 12:19:28 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 12:19:30 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 12:19:31 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 12:19:39 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "27-May-2024 12:19:39 : INF - <CC> Lot <LOTA> is canceled by user <121212122>.",
-                "27-May-2024 12:21:40 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 12:21:42 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 12:21:43 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 12:21:49 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "27-May-2024 12:21:49 : INF - <CC> Lot <LOTA> is canceled by user <121212122>.",
-                "27-May-2024 12:22:40 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 12:22:42 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 12:22:44 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 12:22:55 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "27-May-2024 12:22:55 : INF - <CC> Lot <LOTA> is canceled by user <121212122>.",
-                "27-May-2024 12:26:54 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 12:26:56 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 12:26:57 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 12:27:02 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "27-May-2024 12:27:02 : INF - <CC> Lot <LOTA> is canceled by user <121212122>.",
-                "27-May-2024 12:27:53 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 12:27:55 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 12:27:57 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 12:28:02 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "27-May-2024 12:28:02 : INF - <CC> Lot <LOTA> is canceled by user <121212122>.",
-                "27-May-2024 12:28:40 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 12:28:43 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 12:28:44 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 12:28:49 : INF - <CC> Lot <LOTA> is canceled by user <121212122>.",
-                "27-May-2024 12:33:50 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 12:33:53 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 12:33:54 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 12:34:14 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "27-May-2024 12:34:14 : INF - <CC> Lot <LOTA> is canceled by user <121212122>.",
-                "27-May-2024 12:36:55 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 12:36:57 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 12:36:58 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 12:37:03 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "27-May-2024 12:37:03 : INF - <CC> Lot <LOTA> is canceled by user <121212122>.",
-                "27-May-2024 12:38:13 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 12:38:15 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 12:38:16 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 12:39:07 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "27-May-2024 12:39:07 : INF - <CC> Lot <LOTA> is canceled by user <121212122>.",
-                "27-May-2024 12:43:18 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 12:43:20 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 12:43:21 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 12:43:31 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "27-May-2024 12:43:31 : INF - <CC> Lot <LOTA> is canceled by user <121212122>.",
-                "27-May-2024 13:25:26 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 13:25:28 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 13:25:29 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 13:26:49 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "27-May-2024 13:26:49 : INF - <CC> Lot <LOTA> is canceled by user <1234555>.",
-                "27-May-2024 13:27:57 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 13:27:59 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 13:28:01 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 13:28:12 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "27-May-2024 13:28:12 : INF - <CC> Lot <LOTA> is canceled by user <1234555>.",
-                "27-May-2024 13:32:12 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 13:32:14 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 13:32:15 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 13:32:20 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "27-May-2024 13:32:20 : INF - <CC> Lot <LOTA> is canceled by user <1234555>.",
-                "27-May-2024 13:33:44 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 13:33:47 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 13:33:49 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 13:33:55 : INF - <CC> Lot <LOAT> has been removed from WIP data.",
-                "27-May-2024 13:33:55 : INF - <CC> Lot <LOAT> is canceled by user <1234555>.",
-                "27-May-2024 13:37:20 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 13:37:22 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 13:37:23 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 13:37:54 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "27-May-2024 13:37:54 : INF - <CC> Lot <LOTA> is canceled by user <1234555>.",
-                "27-May-2024 13:39:50 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 13:39:52 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 13:39:53 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 13:39:59 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "27-May-2024 13:39:59 : INF - <CC> Lot <LOTA> is canceled by user <1234555>.",
-                "27-May-2024 13:41:38 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 13:41:39 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 13:41:40 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 13:41:45 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "27-May-2024 13:41:45 : INF - <CC> Lot <LOTA> is canceled by user <1234555>.",
-                "27-May-2024 13:42:31 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 13:42:33 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 13:42:34 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 13:42:43 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "27-May-2024 13:42:43 : INF - <CC> Lot <LOTA> is canceled by user <1234555>.",
-                "27-May-2024 13:43:27 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 13:43:28 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 13:43:29 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 13:43:36 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "27-May-2024 13:43:36 : INF - <CC> Lot <LOTA> is canceled by user <1234555>.",
-                "27-May-2024 13:44:13 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 13:44:14 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 13:44:15 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 13:44:20 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "27-May-2024 13:44:20 : INF - <CC> Lot <LOTA> is canceled by user <1234555>.",
-                "27-May-2024 13:55:46 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 13:55:47 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 13:55:48 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 13:55:59 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "27-May-2024 13:55:59 : INF - <CC> Lot <LOTA> is canceled by user <1234555>.",
-                "27-May-2024 13:56:38 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 13:56:39 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 13:56:40 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 13:56:44 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "27-May-2024 13:56:44 : INF - <CC> Lot <LOTA> is canceled by user <1234555>.",
-                "27-May-2024 13:57:39 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 13:57:40 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 13:57:41 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 13:57:46 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "27-May-2024 13:57:46 : INF - <CC> Lot <LOTA> is canceled by user <1234555>.",
-                "27-May-2024 13:59:42 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 13:59:44 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 13:59:45 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 13:59:49 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "27-May-2024 13:59:49 : INF - <CC> Lot <LOTA> is canceled by user <1234555>.",
-                "27-May-2024 14:02:03 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 14:02:04 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 14:02:09 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
-                "27-May-2024 14:02:09 : INF - <CC> Lot <LOTA> is canceled by user <1234555>.",
-                "27-May-2024 14:06:31 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 14:06:33 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
-                "27-May-2024 14:06:35 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 14:06:37 : INF - Bypass EChecklistInfo Status validation.",
-                "27-May-2024 14:06:37 : ERR - {50007} <CC> Lot, <LOTB>, is processing at AOI-03. Please scan another Lot.",
-                "27-May-2024 14:06:37 : INF - <CC> INPUT is Idle.",
-                "27-May-2024 14:06:55 : INF - Bypass LMS checking",
-                "27-May-2024 14:06:55 : INF - <CC> Lot <LOTB> has been removed from WIP data.",
-                "27-May-2024 14:06:55 : INF - <CC> Lot <LOTB> is unloaded by user <1234555>."
+                ""
             ],
             "Value": 0
         },
         {
-            "Function": "SetLOADButtonAvailability",
+            "Function": "UI update tool ID",
+            "List1": [
+                "AFI-05"
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "Retrieve RTD bypass flag from common code",
+            "List1": [
+                1
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "Set Equipment Funtion Tab",
+            "List1": [
+                "AFI-05"
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 1
+        },
+        {
+            "Function": "SetUNLOADButtonAvailability",
             "List1": [
                 ""
             ],
@@ -663,9 +109,197 @@
             "Value": 0
         },
         {
+            "Function": "SetLOADButtonAvailability",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "UIRTMessage",
+            "List1": [
+                "BLUE-INF"
+            ],
+            "List2": [
+                "10-Jun-2024 14:15:40 : INF - <CC> initialization is successful.",
+                "10-Jun-2024 14:15:40 : INF - <CC> INPUT is Idle.",
+                "10-Jun-2024 14:16:38 : INF - Bypass EChecklistInfo Status validation.",
+                "10-Jun-2024 14:16:44 : INF - <CC> initialization is successful.",
+                "10-Jun-2024 14:16:54 : ERR - {501} <CC> Failed Lot Validation. Reason:  <WFL> Failed to get [LotValidation] reply from WFL server.",
+                "10-Jun-2024 14:17:36 : INF - <CC> INPUT is Idle.",
+                "10-Jun-2024 14:19:32 : INF - Bypass EChecklistInfo Status validation.",
+                "10-Jun-2024 14:19:48 : ERR - {501} <CC> Failed Lot Validation. Reason:  <WFL> Failed to get [LotValidation] reply from WFL server.",
+                "10-Jun-2024 14:19:59 : INF - <CC> INPUT is Idle.",
+                "10-Jun-2024 14:30:46 : INF - Bypass EChecklistInfo Status validation.",
+                "10-Jun-2024 14:31:36 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "10-Jun-2024 14:31:39 : INF - <CC> INPUT is Idle.",
+                "10-Jun-2024 14:32:05 : ERR - {50021} <CC> Failed Lot Cancel for Lot, [LOTC]. Reason:  <CC> Failed Cancel Lot for Lot, [LOTC]. Reason: The Lot is NOT in WIP list.",
+                "10-Jun-2024 14:32:21 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
+                "10-Jun-2024 14:32:21 : INF - <CC> Lot <LOTA> is canceled by user <123455>.",
+                "11-Jun-2024 10:11:49 : INF - Bypass EChecklistInfo Status validation.",
+                "11-Jun-2024 10:12:07 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "11-Jun-2024 10:12:08 : INF - <CC> INPUT is Idle.",
+                "11-Jun-2024 10:19:37 : INF - Bypass EChecklistInfo Status validation.",
+                "11-Jun-2024 10:19:54 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "11-Jun-2024 10:19:55 : INF - <CC> INPUT is Idle.",
+                "11-Jun-2024 10:21:52 : INF - Bypass EChecklistInfo Status validation.",
+                "11-Jun-2024 10:22:11 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "11-Jun-2024 10:22:14 : INF - <CC> INPUT is Idle.",
+                "11-Jun-2024 10:22:33 : INF - Bypass EChecklistInfo Status validation.",
+                "11-Jun-2024 10:22:50 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "11-Jun-2024 10:22:53 : INF - <CC> INPUT is Idle.",
+                "11-Jun-2024 10:25:07 : INF - Bypass EChecklistInfo Status validation.",
+                "11-Jun-2024 10:25:28 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "11-Jun-2024 10:25:31 : INF - <CC> INPUT is Idle.",
+                "11-Jun-2024 10:31:06 : INF - Bypass EChecklistInfo Status validation.",
+                "11-Jun-2024 10:31:06 : ERR - {50007} <CC> Lot, <123>, is processing at AFI-05. Please scan another Lot.",
+                "11-Jun-2024 10:31:06 : INF - <CC> INPUT is Idle.",
+                "11-Jun-2024 10:31:15 : INF - <CC> Lot <123> has been removed from WIP data.",
+                "11-Jun-2024 10:31:15 : INF - <CC> Lot <123> is canceled by user <12345>.",
+                "11-Jun-2024 10:31:23 : INF - <CC> Lot <LOTG> has been removed from WIP data.",
+                "11-Jun-2024 10:31:23 : INF - <CC> Lot <LOTG> is canceled by user <12345>.",
+                "11-Jun-2024 10:31:29 : INF - <CC> Lot <LOTH> has been removed from WIP data.",
+                "11-Jun-2024 10:31:29 : INF - <CC> Lot <LOTH> is canceled by user <12345>.",
+                "11-Jun-2024 10:31:34 : INF - <CC> Lot <LOTC> has been removed from WIP data.",
+                "11-Jun-2024 10:31:34 : INF - <CC> Lot <LOTC> is canceled by user <12345>.",
+                "11-Jun-2024 10:31:43 : INF - <CC> Lot <LOTB> has been removed from WIP data.",
+                "11-Jun-2024 10:31:43 : INF - <CC> Lot <LOTB> is canceled by user <12345>.",
+                "11-Jun-2024 10:32:27 : INF - Bypass EChecklistInfo Status validation.",
+                "11-Jun-2024 10:32:45 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "11-Jun-2024 10:32:47 : INF - <CC> INPUT is Idle.",
+                "11-Jun-2024 10:33:21 : INF - Bypass EChecklistInfo Status validation.",
+                "11-Jun-2024 10:33:40 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "11-Jun-2024 10:33:42 : INF - <CC> INPUT is Idle.",
+                "11-Jun-2024 10:33:51 : INF - <CC> Lot <LOTB> has been removed from WIP data.",
+                "11-Jun-2024 10:33:51 : INF - <CC> Lot <LOTB> is canceled by user <12345>.",
+                "11-Jun-2024 10:39:01 : INF - Bypass EChecklistInfo Status validation.",
+                "11-Jun-2024 10:39:21 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "11-Jun-2024 10:39:22 : INF - <CC> INPUT is Idle.",
+                "11-Jun-2024 12:13:17 : INF - Bypass EChecklistInfo Status validation.",
+                "11-Jun-2024 12:13:35 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "11-Jun-2024 12:13:38 : INF - <CC> INPUT is Idle.",
+                "11-Jun-2024 13:06:51 : INF - Bypass EChecklistInfo Status validation.",
+                "11-Jun-2024 13:07:09 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "11-Jun-2024 13:07:11 : INF - <CC> INPUT is Idle.",
+                "11-Jun-2024 13:07:36 : INF - Bypass LMS checking",
+                "11-Jun-2024 13:08:09 : INF - <CC> Lot <ABC> has been removed from WIP data.",
+                "11-Jun-2024 13:08:09 : INF - <CC> Lot <ABC> is unloaded by user <12345>.",
+                "11-Jun-2024 13:12:00 : INF - <CC> Lot <A> has been removed from WIP data.",
+                "11-Jun-2024 13:12:00 : INF - <CC> Lot <A> is canceled by user <12345>.",
+                "11-Jun-2024 14:12:46 : INF - Bypass EChecklistInfo Status validation.",
+                "11-Jun-2024 14:13:05 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "11-Jun-2024 14:13:09 : INF - <CC> INPUT is Idle.",
+                "11-Jun-2024 14:25:50 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
+                "11-Jun-2024 14:25:50 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
+                "12-Jun-2024 10:07:54 : INF - Bypass EChecklistInfo Status validation.",
+                "12-Jun-2024 10:08:12 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "12-Jun-2024 10:08:15 : INF - <CC> INPUT is Idle.",
+                "12-Jun-2024 10:54:57 : INF - <CC> Lot <LOTY> has been removed from WIP data.",
+                "12-Jun-2024 10:54:57 : INF - <CC> Lot <LOTY> is canceled by user <12345>.",
+                "12-Jun-2024 11:52:26 : INF - Bypass EChecklistInfo Status validation.",
+                "12-Jun-2024 11:52:43 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "12-Jun-2024 11:52:46 : INF - <CC> INPUT is Idle.",
+                "12-Jun-2024 12:11:19 : INF - Bypass EChecklistInfo Status validation.",
+                "12-Jun-2024 12:11:38 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "12-Jun-2024 12:11:41 : INF - <CC> INPUT is Idle.",
+                "12-Jun-2024 12:11:51 : INF - <CC> Lot <LOTY> has been removed from WIP data.",
+                "12-Jun-2024 12:11:51 : INF - <CC> Lot <LOTY> is canceled by user <12345>.",
+                "12-Jun-2024 12:12:01 : INF - <CC> Lot <LOTH> has been removed from WIP data.",
+                "12-Jun-2024 12:12:01 : INF - <CC> Lot <LOTH> is canceled by user <12345>.",
+                "12-Jun-2024 12:22:16 : INF - Bypass EChecklistInfo Status validation.",
+                "12-Jun-2024 12:22:34 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "12-Jun-2024 12:22:35 : INF - <CC> INPUT is Idle.",
+                "12-Jun-2024 12:24:03 : INF - Bypass EChecklistInfo Status validation.",
+                "12-Jun-2024 12:24:21 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "12-Jun-2024 12:24:23 : INF - <CC> INPUT is Idle.",
+                "12-Jun-2024 12:24:35 : INF - <CC> Lot <LOTJ> has been removed from WIP data.",
+                "12-Jun-2024 12:24:35 : INF - <CC> Lot <LOTJ> is canceled by user <12345>.",
+                "12-Jun-2024 12:25:59 : INF - Bypass EChecklistInfo Status validation.",
+                "12-Jun-2024 12:25:59 : ERR - {50007} <CC> Lot, <LOTY>, is processing at AFI-05. Please scan another Lot.",
+                "12-Jun-2024 12:25:59 : INF - <CC> INPUT is Idle.",
+                "12-Jun-2024 12:26:24 : INF - <CC> Lot <LOTY> has been removed from WIP data.",
+                "12-Jun-2024 12:26:24 : INF - <CC> Lot <LOTY> is canceled by user <12345>.",
+                "12-Jun-2024 12:26:32 : INF - Bypass EChecklistInfo Status validation.",
+                "12-Jun-2024 12:26:50 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "12-Jun-2024 12:26:51 : INF - <CC> INPUT is Idle.",
+                "12-Jun-2024 12:30:36 : INF - <CC> Lot <LOTY> has been removed from WIP data.",
+                "12-Jun-2024 12:30:36 : INF - <CC> Lot <LOTY> is canceled by user <12345>.",
+                "12-Jun-2024 12:31:03 : INF - <CC> Lot <LOTB> has been removed from WIP data.",
+                "12-Jun-2024 12:31:03 : INF - <CC> Lot <LOTB> is canceled by user <12345>.",
+                "12-Jun-2024 12:41:44 : INF - Bypass EChecklistInfo Status validation.",
+                "12-Jun-2024 12:42:02 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "12-Jun-2024 12:42:05 : INF - <CC> INPUT is Idle.",
+                "12-Jun-2024 12:44:53 : INF - Bypass EChecklistInfo Status validation.",
+                "12-Jun-2024 12:45:11 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "12-Jun-2024 12:45:14 : INF - <CC> INPUT is Idle.",
+                "12-Jun-2024 12:45:31 : INF - Bypass LMS checking",
+                "12-Jun-2024 12:46:04 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
+                "12-Jun-2024 12:46:04 : INF - <CC> Lot <LOTA> is unloaded by user <12345>.",
+                "12-Jun-2024 12:46:21 : INF - Bypass LMS checking",
+                "12-Jun-2024 12:46:54 : INF - <CC> Lot <LOTB> has been removed from WIP data.",
+                "12-Jun-2024 12:46:54 : INF - <CC> Lot <LOTB> is unloaded by user <12345>.",
+                "12-Jun-2024 12:47:09 : INF - Bypass LMS checking",
+                "12-Jun-2024 12:47:42 : INF - <CC> Lot <LOTG> has been removed from WIP data.",
+                "12-Jun-2024 12:47:42 : INF - <CC> Lot <LOTG> is unloaded by user <1234>.",
+                "12-Jun-2024 12:49:53 : INF - Bypass EChecklistInfo Status validation.",
+                "12-Jun-2024 12:50:11 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "12-Jun-2024 12:50:13 : INF - <CC> INPUT is Idle.",
+                "12-Jun-2024 12:52:41 : INF - Bypass LMS checking",
+                "12-Jun-2024 12:53:14 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
+                "12-Jun-2024 12:53:14 : INF - <CC> Lot <LOTA> is unloaded by user <12345>.",
+                "12-Jun-2024 12:53:32 : INF - Bypass EChecklistInfo Status validation.",
+                "12-Jun-2024 12:53:50 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "12-Jun-2024 12:53:51 : INF - <CC> INPUT is Idle.",
+                "12-Jun-2024 12:57:51 : INF - Bypass LMS checking",
+                "12-Jun-2024 12:58:24 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
+                "12-Jun-2024 12:58:24 : INF - <CC> Lot <LOTA> is unloaded by user <12345>.",
+                "12-Jun-2024 13:03:31 : INF - Bypass EChecklistInfo Status validation.",
+                "12-Jun-2024 13:03:48 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "12-Jun-2024 13:03:49 : INF - <CC> INPUT is Idle.",
+                "12-Jun-2024 13:04:11 : INF - Bypass LMS checking",
+                "12-Jun-2024 13:04:44 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
+                "12-Jun-2024 13:04:44 : INF - <CC> Lot <LOTA> is unloaded by user <12345>.",
+                "14-Jun-2024 10:38:59 : INF - Bypass EChecklistInfo Status validation.",
+                "14-Jun-2024 10:39:17 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "14-Jun-2024 10:39:19 : INF - <CC> INPUT is Idle.",
+                "14-Jun-2024 11:23:07 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
+                "14-Jun-2024 11:23:07 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
+                "14-Jun-2024 13:40:30 : INF - Bypass EChecklistInfo Status validation.",
+                "14-Jun-2024 13:40:47 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "14-Jun-2024 13:40:50 : INF - <CC> INPUT is Idle.",
+                "14-Jun-2024 13:41:33 : INF - <CC> Lot <LOTB> has been removed from WIP data.",
+                "14-Jun-2024 13:41:33 : INF - <CC> Lot <LOTB> is canceled by user <12345>.",
+                "14-Jun-2024 13:41:34 : ERR - {50021} <CC> Failed Lot Cancel for Lot, [LOTB]. Reason:  <CC> Failed Cancel Lot for Lot, [LOTB]. Reason: The Lot is NOT in WIP list."
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "Handle extra button settings",
+            "List1": [
+                "$REMOVE LOT"
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 1
+        },
+        {
+            "Function": "Set Equipment XSite State",
+            "List1": [
+                "XSite = IDLE"
+            ],
+            "List2": [
+                "Set EQP XSite State to OUI"
+            ],
+            "Value": 0
+        },
+        {
             "Function": "Set\/clear equipment blinking status",
             "List1": [
-                "AOI-03"
+                "AFI-05"
             ],
             "List2": [
                 "Set EQP Blinking Status to OUI"
@@ -673,12 +307,32 @@
             "Value": 0
         },
         {
-            "Function": "SetUNLOADButtonAvailability",
+            "Function": "SetWIPInfo",
+            "List1": [],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "AutoLogOff",
             "List1": [
                 ""
             ],
             "List2": [
                 ""
+            ],
+            "Value": 0
+        }
+    ],
+    "AOI-03": [
+        {
+            "Function": "SetEquipmentStatus",
+            "List1": [
+                "BLUE"
+            ],
+            "List2": [
+                "IDLE"
             ],
             "Value": 0
         },
@@ -723,6 +377,116 @@
             "Value": 1
         },
         {
+            "Function": "SetUNLOADButtonAvailability",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "SetLPStatus",
+            "List1": [
+                "Idle"
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "SetLPLotId",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "SetLPRecipeId",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "UISetLPButtonName",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                "LOAD"
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "SetLOADButtonAvailability",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "UIRTMessage",
+            "List1": [
+                "BLUE-INF"
+            ],
+            "List2": [
+                "10-Jun-2024 14:15:36 : INF - <CC> initialization is successful.",
+                "10-Jun-2024 14:15:36 : INF - <CC> INPUT is Idle.",
+                "10-Jun-2024 14:16:40 : INF - <CC> initialization is successful.",
+                "10-Jun-2024 14:32:30 : INF - Bypass EChecklistInfo Status validation.",
+                "10-Jun-2024 14:33:03 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "10-Jun-2024 14:33:06 : INF - <CC> INPUT is Idle.",
+                "10-Jun-2024 14:33:10 : INF - <CC> Lot <LOTD> has been removed from WIP data.",
+                "10-Jun-2024 14:33:10 : INF - <CC> Lot <LOTD> is canceled by user <12345>.",
+                "10-Jun-2024 15:49:02 : INF - Bypass EChecklistInfo Status validation.",
+                "10-Jun-2024 15:49:19 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "10-Jun-2024 15:49:21 : INF - <CC> INPUT is Idle.",
+                "12-Jun-2024 13:09:22 : INF - Bypass LMS checking",
+                "12-Jun-2024 13:09:55 : INF - <CC> Lot <LOTB> has been removed from WIP data.",
+                "12-Jun-2024 13:09:55 : INF - <CC> Lot <LOTB> is unloaded by user <12345>.",
+                "12-Jun-2024 13:12:33 : INF - Bypass EChecklistInfo Status validation.",
+                "12-Jun-2024 13:12:52 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "12-Jun-2024 13:12:52 : INF - <CC> INPUT is Idle.",
+                "12-Jun-2024 13:14:09 : INF - Bypass LMS checking",
+                "12-Jun-2024 13:14:41 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
+                "12-Jun-2024 13:14:41 : INF - <CC> Lot <LOTA> is unloaded by user <12345>.",
+                "14-Jun-2024 13:39:42 : INF - Bypass EChecklistInfo Status validation.",
+                "14-Jun-2024 13:40:01 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "14-Jun-2024 13:40:03 : INF - <CC> INPUT is Idle.",
+                "14-Jun-2024 13:46:22 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
+                "14-Jun-2024 13:46:22 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
+                "14-Jun-2024 15:16:39 : INF - Bypass EChecklistInfo Status validation.",
+                "14-Jun-2024 15:16:57 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "14-Jun-2024 15:17:00 : INF - <CC> INPUT is Idle.",
+                "14-Jun-2024 15:17:07 : INF - <CC> Lot <A> has been removed from WIP data.",
+                "14-Jun-2024 15:17:07 : INF - <CC> Lot <A> is canceled by user <12345>.",
+                "14-Jun-2024 15:18:03 : INF - Bypass EChecklistInfo Status validation.",
+                "14-Jun-2024 15:18:21 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "14-Jun-2024 15:18:22 : INF - <CC> INPUT is Idle.",
+                "14-Jun-2024 15:18:33 : INF - Bypass LMS checking",
+                "14-Jun-2024 15:19:06 : INF - <CC> Lot <A> has been removed from WIP data.",
+                "14-Jun-2024 15:19:06 : INF - <CC> Lot <A> is unloaded by user <12345>.",
+                "14-Jun-2024 15:20:25 : INF - Bypass EChecklistInfo Status validation.",
+                "14-Jun-2024 15:20:43 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "14-Jun-2024 15:20:44 : INF - <CC> INPUT is Idle.",
+                "14-Jun-2024 15:20:51 : INF - <CC> Lot <A> has been removed from WIP data.",
+                "14-Jun-2024 15:20:51 : INF - <CC> Lot <A> is canceled by user <12345>."
+            ],
+            "Value": 0
+        },
+        {
             "Function": "Handle extra button settings",
             "List1": [
                 "$REMOVE LOT"
@@ -743,7 +507,37 @@
             "Value": 0
         },
         {
-            "Function": "AutoLogOff",
+            "Function": "Set\/clear equipment blinking status",
+            "List1": [
+                "AOI-03"
+            ],
+            "List2": [
+                "Set EQP Blinking Status to OUI"
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "SetWIPInfo",
+            "List1": [],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        }
+    ],
+    "Backfill": [
+        {
+            "Function": "SetEquipmentStatus",
+            "List1": [
+                "BLUE"
+            ],
+            "List2": [
+                "IDLE"
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "CC Request Clear UI",
             "List1": [
                 ""
             ],
@@ -753,16 +547,477 @@
             "Value": 0
         },
         {
-            "Function": "CC Report Lost Connection",
-            "List1": null,
-            "List2": null,
-            "Value": null
+            "Function": "UI update tool ID",
+            "List1": [
+                "Backfill"
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "Retrieve RTD bypass flag from common code",
+            "List1": [
+                1
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "Set Equipment Funtion Tab",
+            "List1": [
+                "Backfill"
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 1
+        },
+        {
+            "Function": "SetUNLOADButtonAvailability",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "SetLPStatus",
+            "List1": [
+                "Idle"
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "SetLPLotId",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "SetLPRecipeId",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "UISetLPButtonName",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                "LOAD"
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "SetLOADButtonAvailability",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "UIRTMessage",
+            "List1": [
+                "BLUE-INF"
+            ],
+            "List2": [
+                "10-Jun-2024 14:34:28 : INF - <CC> initialization is successful.",
+                "10-Jun-2024 14:34:28 : INF - <CC> INPUT is Idle.",
+                "10-Jun-2024 14:34:45 : INF - <CC> initialization is successful.",
+                "12-Jun-2024 12:25:10 : INF - Bypass EChecklistInfo Status validation.",
+                "12-Jun-2024 12:25:28 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "12-Jun-2024 12:25:31 : INF - <CC> INPUT is Idle.",
+                "12-Jun-2024 13:21:51 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
+                "12-Jun-2024 13:21:51 : INF - <CC> Lot <LOTA> is canceled by user <12345>.",
+                "12-Jun-2024 14:13:59 : INF - Bypass EChecklistInfo Status validation.",
+                "12-Jun-2024 14:14:16 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "12-Jun-2024 14:14:19 : INF - <CC> INPUT is Idle.",
+                "12-Jun-2024 14:14:49 : INF - Bypass LMS checking",
+                "12-Jun-2024 14:15:22 : INF - <CC> Lot <LOTA> has been removed from WIP data.",
+                "12-Jun-2024 14:15:22 : INF - <CC> Lot <LOTA> is unloaded by user <12345>.",
+                "12-Jun-2024 14:16:23 : INF - Bypass EChecklistInfo Status validation.",
+                "12-Jun-2024 14:16:41 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "12-Jun-2024 14:16:43 : INF - <CC> INPUT is Idle.",
+                "14-Jun-2024 12:36:27 : INF - Bypass LMS checking",
+                "14-Jun-2024 12:37:00 : INF - <CC> Lot <A> has been removed from WIP data.",
+                "14-Jun-2024 12:37:00 : INF - <CC> Lot <A> is unloaded by user <12345>."
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "Handle extra button settings",
+            "List1": [
+                "$REMOVE LOT"
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 1
+        },
+        {
+            "Function": "Set Equipment XSite State",
+            "List1": [
+                "XSite = IDLE"
+            ],
+            "List2": [
+                "Set EQP XSite State to OUI"
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "Set\/clear equipment blinking status",
+            "List1": [
+                "Backfill"
+            ],
+            "List2": [
+                "Set EQP Blinking Status to OUI"
+            ],
+            "Value": 0
         },
         {
             "Function": "SetWIPInfo",
             "List1": [],
             "List2": [
                 ""
+            ],
+            "Value": 0
+        }
+    ],
+    "CAM-01": [
+        {
+            "Function": "SetEquipmentStatus",
+            "List1": [
+                "BLUE"
+            ],
+            "List2": [
+                "IDLE"
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "CC Request Clear UI",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "UI update tool ID",
+            "List1": [
+                "CAM-01"
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "Retrieve RTD bypass flag from common code",
+            "List1": [
+                1
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "Set Equipment Funtion Tab",
+            "List1": [
+                "CAM-01"
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 1
+        },
+        {
+            "Function": "SetUNLOADButtonAvailability",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "SetLPStatus",
+            "List1": [
+                "Idle"
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "SetLPLotId",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "SetLPRecipeId",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "UISetLPButtonName",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                "LOAD"
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "SetLOADButtonAvailability",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "UIRTMessage",
+            "List1": [
+                "BLUE-INF"
+            ],
+            "List2": [
+                "10-Jun-2024 14:34:33 : INF - <CC> initialization is successful.",
+                "10-Jun-2024 14:34:33 : INF - <CC> INPUT is Idle.",
+                "10-Jun-2024 14:34:49 : INF - <CC> initialization is successful.",
+                "10-Jun-2024 14:38:53 : INF - Bypass EChecklistInfo Status validation.",
+                "10-Jun-2024 14:39:27 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "10-Jun-2024 14:39:29 : INF - <CC> INPUT is Idle.",
+                "10-Jun-2024 14:39:32 : INF - <CC> Lot <LOTB> has been removed from WIP data.",
+                "10-Jun-2024 14:39:32 : INF - <CC> Lot <LOTB> is canceled by user <12345>."
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "Handle extra button settings",
+            "List1": [
+                "$REMOVE LOT"
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 1
+        },
+        {
+            "Function": "Set Equipment XSite State",
+            "List1": [
+                "XSite = IDLE"
+            ],
+            "List2": [
+                "Set EQP XSite State to OUI"
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "Set\/clear equipment blinking status",
+            "List1": [
+                "CAM-01"
+            ],
+            "List2": [
+                "Set EQP Blinking Status to OUI"
+            ],
+            "Value": 0
+        }
+    ],
+    "DP-08": [
+        {
+            "Function": "SetEquipmentStatus",
+            "List1": [
+                "BLUE"
+            ],
+            "List2": [
+                "IDLE"
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "CC Request Clear UI",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "UI update tool ID",
+            "List1": [
+                "DP-08"
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "Retrieve RTD bypass flag from common code",
+            "List1": [
+                1
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "Set Equipment Funtion Tab",
+            "List1": [
+                "DP-08"
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 1
+        },
+        {
+            "Function": "SetUNLOADButtonAvailability",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "SetLPStatus",
+            "List1": [
+                "Idle"
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "SetLPLotId",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "SetLPRecipeId",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "UISetLPButtonName",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                "LOAD"
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "SetLOADButtonAvailability",
+            "List1": [
+                ""
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "UIRTMessage",
+            "List1": [
+                "BLUE-INF"
+            ],
+            "List2": [
+                "10-Jun-2024 14:34:39 : INF - <CC> initialization is successful.",
+                "10-Jun-2024 14:34:39 : INF - <CC> INPUT is Idle.",
+                "10-Jun-2024 14:34:56 : INF - <CC> initialization is successful.",
+                "10-Jun-2024 14:39:43 : INF - Bypass EChecklistInfo Status validation.",
+                "10-Jun-2024 14:40:00 : INF - <CC> Please press button UNLOAD to unload Lot when the process finished.",
+                "10-Jun-2024 14:40:02 : INF - <CC> INPUT is Idle.",
+                "10-Jun-2024 14:40:12 : INF - <CC> Lot <LOTD> has been removed from WIP data.",
+                "10-Jun-2024 14:40:12 : INF - <CC> Lot <LOTD> is canceled by user <12345>."
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "Handle extra button settings",
+            "List1": [
+                "$REMOVE LOT"
+            ],
+            "List2": [
+                ""
+            ],
+            "Value": 1
+        },
+        {
+            "Function": "Set Equipment XSite State",
+            "List1": [
+                "XSite = IDLE"
+            ],
+            "List2": [
+                "Set EQP XSite State to OUI"
+            ],
+            "Value": 0
+        },
+        {
+            "Function": "Set\/clear equipment blinking status",
+            "List1": [
+                "DP-08"
+            ],
+            "List2": [
+                "Set EQP Blinking Status to OUI"
             ],
             "Value": 0
         }

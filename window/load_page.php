@@ -20,7 +20,8 @@
 <h1 style="display: flex; justify-content: center; margin-top: 100px;">Please input your Lot ID</h1>
     <div class = 'container' style="margin-top:50px; justify-content:center">
     <form id="loadLotForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" onsubmit="checkEmpty(event);">
-        <div class='row' style="margin-top: 10px;">
+    <div class="loadingLoad" id="loadingLoad"></div>    
+    <div class='row' style="margin-top: 10px;">
             <div class='col-25'>
                 <span>Lot ID:</span>
             </div>
@@ -29,7 +30,7 @@
             </div>
         </div>
         <div class="button-container">
-            <button type='submit' name='submit'>Ok</button>
+            <button type='submit' onclick="showLoading();" name='submit'>OK</button>
             <button onclick="closeWindow()">Cancel</button>
         </div>
     </form>
@@ -48,7 +49,6 @@ if(isset($_POST['submit'])) {
         // Call the LoadLotRquest function with the provided parameters
         $response = LotRequest($function,$data, $eqpId);
         // Handle the response if needed
-        echo $response;
         $responseArray = json_decode($response, true);
         echo '<script>window.close();</script>';
     
@@ -56,10 +56,6 @@ if(isset($_POST['submit'])) {
 ?>
 </body>
 <script>
-    function closeWindow() {
-    // Close the pop-out window
-    window.close();
-}
 function checkEmpty(event) {
     // Check if the event target is the submit button
     if (event.submitter && event.submitter.name === 'submit') {
@@ -78,5 +74,8 @@ function checkEmpty(event) {
     // If the event target is not the submit button or the field is not empty, allow the form to submit
     return true;
 }
+function showLoading() {
+            document.getElementById('loadingLoad').style.display = 'block';
+        }
 </script>
 </html>

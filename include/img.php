@@ -1,5 +1,9 @@
 <script>
 function EquipmentAvailability() {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => {
+        controller.abort();
+    }, 2500);
     fetch('../api/received_data.json')
         .then(response => response.json())
         .then(data => {

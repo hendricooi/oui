@@ -5,7 +5,7 @@
     justify-content: space-evenly;
     list-style: none;
     box-shadow: 2px 2px 5px lightgrey; 
-    width:-webkit-fill-available;
+    width: 100%;
     position: absolute;
     top:0px;
     left:0px;
@@ -32,21 +32,21 @@
 }
   .container {
     display: flex;
-    margin-top:115px;
+    margin-top:110px;
 }
 .content {
   margin:0 10px 0px;
   border:2px solid;
   padding:10px 20px;
-  width:-webkit-fill-available;
-  height:600px;
+  width:100%;
+  height:560px;
   border-radius:15px;
 }
 .sideEq {
   border: 2px solid grey;
   background-color: white;
   width: 400px;
-  height: 600px;
+  height: 560px;
   overflow-x: hidden;
   overflow-y: auto;
   text-align: left;
@@ -479,7 +479,6 @@ i {
   display:flex;
   margin-top: 15px;
   justify-content: center;
-  padding:30px;
 }
 
 .buttons button {
@@ -510,10 +509,10 @@ i {
 
 .runtimeInfo {
   width: 98%;
-  max-height: 120px;
-  height:120px;
+  max-height: 100px;
+  height:100px;
   background-color: lightgray;
-  margin-top: 5px;
+  /* margin-top: 5px; */
   padding: 10px;
   border-radius: 10px;
   overflow-y: auto; /* Enable vertical scrollbar */
@@ -539,6 +538,20 @@ i {
   position: fixed;
   left: 50%;
   top: 50%;
+  transform: translate(-50%, -50%);
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  z-index:1000;
+}
+.loadingLoad {
+  display: none;
+  position: fixed;
+  left: 40%;
+  top: 40%;
   transform: translate(-50%, -50%);
   border: 16px solid #f3f3f3;
   border-radius: 50%;

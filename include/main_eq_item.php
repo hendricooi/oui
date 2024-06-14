@@ -63,7 +63,7 @@ $item_div = str_replace('-', '_', $item);
     </table>
 </div>
 
-        <div style='display: flex; margin-top:10px; border:1px solid black; padding-right:5px;'>
+        <div style='display: flex; margin-top:5px; border:1px solid black; padding-right:5px;'>
             <div style='display: flex; flex-wrap: wrap; width:100%;'>
                 <button class=eq-button onclick='checkLoggedIn()'>Reserved 1</button>
                 <button class=eq-button>Reserved 2</button>

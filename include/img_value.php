@@ -1,5 +1,5 @@
 <script>
-function EquipmentAvailability() {
+function EquipmentAvailability_value() {
     fetch('../api/received_data.json')
         .then(response => response.json())
         .then(data => {
@@ -16,9 +16,9 @@ function EquipmentAvailability() {
         });
 }
 
-EquipmentAvailability();
+EquipmentAvailability_value();
 
-setInterval(EquipmentAvailability, 3000);
+setInterval(EquipmentAvailability_value, 3000);
 
 
 </script>
