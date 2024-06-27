@@ -90,8 +90,18 @@ $key_div = str_replace('-', '_', $key);
     </div>
 
 <script>
-const appendedMessages_<?php echo $key_div ?> = new Set();
-
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') {
+    console.log("abc");
+    // Retry the fetch request or refresh data
+    fetchData();
+    updateLPStatus();
+    updateEqStatus();
+    updateLPButtonName();
+    fetchTableData();
+    RemoveItem();
+  }
+});
 
 // Call functions initially when page loads
 fetchData();
@@ -109,6 +119,7 @@ setInterval(updateLPButtonName, 3000);
 setInterval(fetchTableData, 3000);
 setInterval(RemoveItem, 3000);
 
+const appendedMessages_<?php echo $key_div ?> = new Set();
 //Run time info message
 function fetchData() {
     const controller = new AbortController();
@@ -416,19 +427,4 @@ function openLoadPopoutWindow() {
 };
 checkLoggedIn(openWindowIfLoggedIn);
 }
-
-async function requestWakeLock() {
-    try {
-        const wakeLock = await navigator.wakeLock.request('screen');
-        wakeLock.addEventListener('release', () => {
-            console.log('Wake Lock was released');
-        });
-        console.log('Wake Lock is active');
-    } catch (err) {
-        console.error(`${err.name}, ${err.message}`);
-    }
-}
-
-// Request the wake lock to prevent the device from sleeping
-requestWakeLock();
 </script>
