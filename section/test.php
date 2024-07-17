@@ -43,6 +43,39 @@ include($path .  'include\footer.php');
 
 <script src="../include/script_eq.js" type="text/javascript"></script>
 <script src="../include/script_jquery.js" type="text/javascript"></script>
+<script>
+
+let idleTime = 0;
+const idleLimit = 5 * 60 * 1000; // 5 minutes
+
+// Reset the idle timer on user activity
+function resetIdleTimer() {
+    idleTime = 0;
+}
+
+function checkIdleTime() {
+    idleTime += 1000;
+    console.log(idleTime);
+    if (idleTime >= idleLimit) {
+        alert('Your session has timed out due to inactivity.');
+        // Redirect to the main page and destroy the session
+        window.location.href = '../logout_main.php';
+    }
+}
+
+// Increment the idle timer every second
+setInterval(checkIdleTime, 1000);
+
+// Reset the idle timer on various user events
+window.onload = resetIdleTimer;
+window.onmousemove = resetIdleTimer;
+window.onmousedown = resetIdleTimer;
+window.ontouchstart = resetIdleTimer;
+window.onclick = resetIdleTimer;
+window.onkeypress = resetIdleTimer;
+window.addEventListener('scroll', resetIdleTimer, true);
+
+</script>
 </body>
 </html>
 
