@@ -28,7 +28,7 @@ $key_div = str_replace('-', '_', $key);
                 </div>
                 <div style='flex: 1;'>
                     <div>Lot ID</div>
-                    <input type='text' style='height: 20px; padding: 5px; font-size: 14px; border: 1px solid #ccc; border-radius: 5px;'>
+                    <input type='text' id='textBox<?php echo $key_div?>' style='height: 20px; padding: 5px; font-size: 14px; border: 1px solid #ccc; border-radius: 5px;'>
                 </div>
                 <div style='flex: 1;'>
                     <div>Recipe</div>
@@ -88,327 +88,224 @@ $key_div = str_replace('-', '_', $key);
         <!-- Content will be updated here -->
     </div>
     </div>
-
+    <script src="../include/script_jquery.js" type="text/javascript"></script>
 <script>
-document.addEventListener('visibilitychange', () => {
-  if (document.visibilityState === 'visible') {
-    console.log("abc");
-    // Retry the fetch request or refresh data
-    fetchData();
-    updateLPStatus();
-    updateEqStatus();
-    updateLPButtonName();
-    fetchTableData();
-    RemoveItem();
-  }
-});
-
-// Call functions initially when page loads
-fetchData();
-updateLPStatus();
-updateEqStatus();
-updateLPButtonName();
-fetchTableData();
-RemoveItem();
-
-// Set an interval to refresh the data every 3000 milliseconds (3 seconds)
-setInterval(fetchData, 3000);
-setInterval(updateLPStatus, 3000);
-setInterval(updateEqStatus, 3000);
-setInterval(updateLPButtonName, 3000);
-setInterval(fetchTableData, 3000);
-setInterval(RemoveItem, 3000);
-
 const appendedMessages_<?php echo $key_div ?> = new Set();
-//Run time info message
-function fetchData() {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => {
-        controller.abort();
-    }, 2500); //
 
-    fetch('../api/received_data.json', { signal: controller.signal })
-        .then(response => response.json())
-        .then(data => {
-            clearTimeout(timeoutId);
+if (window.Worker) {
+    const worker = new Worker('../include/worker.js');
+    worker.onmessage = function(event) {
+        if (event.data.type === 'data') {
+            const data = event.data.data;
+            console.log('Data received from worker:', new Date().toLocaleString(), data);// Add logging to check data
+            fetchTableData(data);
+            fetchData(data);
+            updateLPStatus(data);
+            updateEqStatus(data);
+            updateLPButtonName(data);
+            RemoveItem(data);
+        } else if (event.data.type === 'error') {
+            console.error('Worker error:', event.data.error);
+        }
+    };
 
-            const uirtMessages = data["<?php echo $key ?>"].filter(item => item.Function === "UIRTMessage").map(item => item.List2);
-            const runtimeInfoDiv = document.getElementById('runtimeInfo-<?php echo $key_div ?>');
+    // Continuously fetch data from the worker every 3 seconds
+    setInterval(() => worker.postMessage('fetch'), 3000);
 
-            // Clear the existing messages
-            runtimeInfoDiv.innerHTML = '';
+    function fetchTableData(data) {
+        const wipInfoMessages = (data["<?php echo $key ?>"] || []).filter(item => item.Function === "SetWIPInfo").flatMap(item => item.List1);
+        const wipInfoTableBody = document.getElementById('wipInfoTableBody-<?php echo $key_div ?>');
 
-            if (uirtMessages.length > 0) {
-                // Flatten the array and sort messages in descending order
-                const allMessages = uirtMessages.flat().sort((a, b) => b.localeCompare(a));
+        if (!wipInfoTableBody) {
+            console.error('Table body not found');
+            return;
+        }
 
-                allMessages.forEach(message => {
-                    const messageDiv = document.createElement('div');
-                    messageDiv.textContent = message;
-                    messageDiv.dataset.content = message; // Set data attribute to identify message content
-                    messageDiv.classList.add('message'); // Add message class for styling
-                    // Check if message contains "ERR" and add error class
-                    if (message.includes("ERR")) {
-                        messageDiv.classList.add('error'); // Add error class
-                    }
-                    // Append new message to runtimeInfoDiv
-                    runtimeInfoDiv.appendChild(messageDiv);
-                });
-            } else {
-                // Append message indicating no UIRT Messages
-                const noMessagesDiv = document.createElement('div');
-                noMessagesDiv.textContent = 'No UIRT Messages';
-                noMessagesDiv.classList.add('no-messages');
-                runtimeInfoDiv.appendChild(noMessagesDiv);
-            }
-        })
-        .catch(error => {
-            if (error.name === 'AbortError') {
-            } else {
-            }
+        const currentRows = Array.from(wipInfoTableBody.getElementsByTagName('tr'));
+        const currentRowsMap = new Map();
+
+        currentRows.forEach(row => {
+            const identifier = JSON.stringify(Array.from(row.children).map(cell => cell.textContent));
+            currentRowsMap.set(identifier, row);
         });
-}
 
-//Load Port status
-function updateLPStatus() {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => {
-        controller.abort();
-    }, 2500); //
-    fetch('../api/received_data.json')
-        .then(response => response.json())
-        .then(data => {
-            const lpStatusArray = data["<?php echo $key ?>"].find(item => item.Function === "SetLPStatus");
-            const EqStatusDiv = document.getElementById('EqStatus');
-            if (lpStatusArray) {
-                const lpStatus = lpStatusArray.List1;
-                const lpStatusInput = document.getElementById('LpStatus-<?php echo $key_div ?>');
-                if (lpStatusInput) {
-                    lpStatusInput.value = lpStatus;
-                } else {
-                    console.error('Input field not found with ID:', 'LpStatus-<?php echo $key_div ?>');
+        if (wipInfoMessages.length > 0) {
+            showLoading<?php echo $key_div ?>();
+
+            const uniqueEntries = [];
+
+            wipInfoMessages.forEach(info => {
+                const identifier = JSON.stringify(info);
+                if (!currentRowsMap.has(identifier)) {
+                    const row = document.createElement('tr');
+                    row.style.height = '25px';
+                    row.style.maxHeight = '25px';
+                    row.style.color = 'blue';
+
+                    info.forEach(cellData => {
+                        const cell = document.createElement('td');
+                        cell.textContent = cellData;
+                        row.appendChild(cell);
+                    });
+
+                    wipInfoTableBody.insertBefore(row, wipInfoTableBody.firstChild);
+                    currentRowsMap.set(identifier, row);
                 }
-            } else {
-            
-            }
-        })
-        .catch(error => {
-        
-        });
-}
-
-//Equipment Status
-function updateEqStatus() {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => {
-        controller.abort();
-    }, 2500); //
-    fetch('../api/received_data.json')
-        .then(response => response.json())
-        .then(data => {
-            const messages = data["<?php echo $key ?>"].filter(item => item.Function === "SetEquipmentStatus").map(item => item.List2[0]);
-            const colors = data["<?php echo $key ?>"].filter(item => item.Function === "SetEquipmentStatus").map(item => item.List1[0]);
-            const EqStatusDiv = document.getElementById('EqStatus-<?php echo $key_div?>');
-            if (messages.length > 0) {
-                EqStatusDiv.innerHTML = ''; // Clear existing content
-                EqStatusDiv.innerHTML = messages[0]; // Assuming only one message is to be displayed
-                // Set font color based on color value
-                EqStatusDiv.style.color = colors[0] === "BLUE" ? "blue" : 
-                                        colors[0] === "RED" ? "red" : 
-                                        colors[0] === "GREEN" ? "green" : "black";
-            } else {
-            
-            }
-        })
-        .catch(error => {
-        
-        });
-}
-
-//Load button name (LOAD/RESET)
-function updateLPButtonName() {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => {
-        controller.abort();
-    }, 2500); //
-    fetch('../api/received_data.json')
-        .then(response => response.json())
-        .then(data => {
-            const LpButton = data["<?php echo $key ?>"].filter(item => item.Function === "UISetLPButtonName").map(item => item.List2[0]);
-            const LpColors = data["<?php echo $key ?>"].filter(item => item.Function === "UISetLPButtonName").map(item => item.List1[0]);
-            const EqButtonDiv = document.getElementById('LoadButton-<?php echo $key_div ?>');
-            if(LpButton) {
-                EqButtonDiv.innerHTML = ''; // Clear existing content
-                EqButtonDiv.innerHTML = LpButton[0];
-                EqButtonDiv.style.fontSize = "15px";
-                EqButtonDiv.style.fontWeight = "bold";
-                EqButtonDiv.style.backgroundColor = LpColors[0] === "RED" ? "red" :"";  
-                EqButtonDiv.onclick = LpButton[0] === "LOAD" ? openLoadPopoutWindow : resetData;
-                if(LpButton[0]=== "LOAD"){
-                EqButtonDiv.addEventListener('mouseenter', function() {
-                // Change background color to darkgrey
-                this.style.backgroundColor = 'darkgrey';
-                });
-            
-                // Add event listener for mouseleave (hover out)
-                EqButtonDiv.addEventListener('mouseleave', function() {
-                // Reset background color
-                this.style.backgroundColor = ''; // or whatever the default background color is
-                });
-            }
-            else{
-                EqButtonDiv.addEventListener('mouseenter', function() {
-                // Change background color to darkgrey
-                this.style.backgroundColor = 'red';
-                });
-            
-                // Add event listener for mouseleave (hover out)
-                EqButtonDiv.addEventListener('mouseleave', function() {
-                // Reset background color
-                this.style.backgroundColor = 'red'; // or whatever the default background color is
-                });
-            }
-
-            }
-        })
-    .catch(error => {
-                // Do nothing to suppress the error
+                uniqueEntries.push(info);
             });
-}
 
-//WIP table data
-function fetchTableData() {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => {
-        controller.abort();
-    }, 2500); //
-    fetch('../api/received_data.json')
-        .then(response => response.json())
-        .then(data => {
-            // Extract the WIP info messages where the function is "SetWIPInfo"
-            const wipInfoMessages = data["<?php echo $key ?>"].filter(item => item.Function === "SetWIPInfo").flatMap(item => item.List1);
-            const wipInfoTableBody = document.getElementById('wipInfoTableBody-<?php echo $key_div ?>');
-            
-            // Clear existing table rows
+            currentRows.forEach(row => {
+                const identifier = JSON.stringify(Array.from(row.children).map(cell => cell.textContent));
+                if (!uniqueEntries.some(entry => JSON.stringify(entry) === identifier)) {
+                    row.remove();
+                    currentRowsMap.delete(identifier);
+                }
+            });
+
+            hideLoading<?php echo $key_div ?>();
+        } else {
             wipInfoTableBody.innerHTML = '';
+            hideLoading<?php echo $key_div ?>();
+        }
+    }
 
-            // Check if there are any WIP info messages to display
-            if (wipInfoMessages.length > 0) {
-                showLoading<?php echo $key_div ?>(); // Show loading indicator when there are messages to display
-                const uniqueEntries = []; // To store unique entries
+    function fetchData(data) {
+        const uirtMessages = (data["<?php echo $key ?>"] || []).filter(item => item.Function === "UIRTMessage").map(item => item.List2);
+        const runtimeInfoDiv = document.getElementById('runtimeInfo-<?php echo $key_div ?>');
 
-                // Iterate over each WIP info entry
-                wipInfoMessages.forEach(info => {
-                    // Check if the entry is already in the table
-                    const exists = uniqueEntries.some(entry => JSON.stringify(entry) === JSON.stringify(info));
+        if (!runtimeInfoDiv) {
+            console.error('Runtime info div not found');
+            return;
+        }
 
-                    // If the entry does not exist, add it to the table and uniqueEntries
-                    if (!exists) {
-                        const row = document.createElement('tr');
-                        row.style.height = '25px';
-                        row.style.maxHeight = '25px';
-                        row.style.color = 'blue';
-
-                        // Iterate over each piece of data in the entry and create a table cell for it
-                        info.forEach(cellData => {
-                            const cell = document.createElement('td');
-                            cell.textContent = cellData;
-                            row.appendChild(cell);
-                        });
-
-                        // Append the completed row to the table body
-                        wipInfoTableBody.appendChild(row);
-
-                        // Add the entry to uniqueEntries
-                        uniqueEntries.push(info);
+        if (uirtMessages.length > 0) {
+            uirtMessages.forEach(messageList => {
+                messageList.forEach(message => {
+                    const existingMessages = Array.from(runtimeInfoDiv.getElementsByClassName('message'));
+                    let isNewMessage = !existingMessages.some(existingMessage => existingMessage.dataset.content === message);
+                    if (isNewMessage) {
+                        const messageDiv = document.createElement('div');
+                        messageDiv.textContent = message;
+                        messageDiv.dataset.content = message;
+                        messageDiv.classList.add('message');
+                        if (message.includes("ERR")) {
+                            messageDiv.classList.add('error');
+                        }
+                        runtimeInfoDiv.insertBefore(messageDiv, runtimeInfoDiv.firstChild);
                     }
                 });
+            });
+        } else {
+            const noMessagesDiv = document.createElement('div');
+            noMessagesDiv.textContent = 'No UIRT Messages';
+            noMessagesDiv.classList.add('no-messages');
+            runtimeInfoDiv.appendChild(noMessagesDiv);
+        }
+    }
 
-                hideLoading<?php echo $key_div ?>(); // Hide loading indicator after data processing is done
-            }
-        })
-        .catch(error => {
-            hideLoading<?php echo $key_div ?>(); // Hide loading indicator if there is an error
+    function updateLPStatus(data) {
+        const lpStatusArray = (data["<?php echo $key ?>"] || []).find(item => item.Function === "SetLPStatus");
+        const lpStatusInput = document.getElementById('LpStatus-<?php echo $key_div ?>');
+
+        if (!lpStatusInput) {
+            console.error('LP status input not found');
+            return;
+        }
+
+        if (lpStatusArray) {
+            lpStatusInput.value = lpStatusArray.List1;
+        }
+    }
+
+    function updateEqStatus(data) {
+        const messages = (data["<?php echo $key ?>"] || []).filter(item => item.Function === "SetEquipmentStatus").map(item => item.List2[0]);
+        const colors = (data["<?php echo $key ?>"] || []).filter(item => item.Function === "SetEquipmentStatus").map(item => item.List1[0]);
+        const EqStatusDiv = document.getElementById('EqStatus-<?php echo $key_div ?>');
+
+        if (!EqStatusDiv) {
+            console.error('Equipment status div not found');
+            return;
+        }
+
+        if (messages.length > 0) {
+            EqStatusDiv.innerHTML = messages[0];
+            EqStatusDiv.style.color = colors[0] === "BLUE" ? "blue" : colors[0] === "RED" ? "red" : colors[0] === "GREEN" ? "green" : "black";
+        }
+    }
+
+    function updateLPButtonName(data) {
+        const LpButton = (data["<?php echo $key ?>"] || []).filter(item => item.Function === "UISetLPButtonName").map(item => item.List2[0]);
+        const LpColors = (data["<?php echo $key ?>"] || []).filter(item => item.Function === "UISetLPButtonName").map(item => item.List1[0]);
+        const EqButtonDiv = document.getElementById('LoadButton-<?php echo $key_div ?>');
+
+        if (!EqButtonDiv) {
+            console.error('Load button div not found');
+            return;
+        }
+
+        if (LpButton.length > 0) {
+            EqButtonDiv.innerHTML = LpButton[0];
+            EqButtonDiv.style.fontSize = "15px";
+            EqButtonDiv.style.fontWeight = "bold";
+            EqButtonDiv.style.backgroundColor = LpColors[0] === "RED" ? "red" : "";
+
+            EqButtonDiv.onclick = LpButton[0] === "LOAD" ? openLoadPopoutWindow : resetData;
+            EqButtonDiv.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = LpButton[0] === "LOAD" ? 'darkgrey' : 'red';
+            });
+            EqButtonDiv.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = LpButton[0] === "LOAD" ? '' : 'red';
+            });
+        }
+    }
+
+    function RemoveItem(data) {
+        const RemoveData = (data["<?php echo $key ?>"] || []).filter(item => item.Function === "RemoveWIPItem").map(item => item.List1[0]);
+
+        if (RemoveData.length > 0) {
+            $.ajax({
+                url: '../include/removeWIP.php',
+                type: 'POST',
+                data: JSON.stringify({ RemoveData: RemoveData }),
+                contentType: 'application/json',
+                success: function(response) {
+                    showLoading<?php echo $key_div ?>();
+                    console.log('PHP script executed successfully');
+                },
+                error: function(xhr, status, error) {
+                    console.error('Failed to execute PHP script', error);
+                },
+                complete: function() {
+                    setTimeout(hideLoading<?php echo $key_div ?>, 8000);
+                }
+            });
+        }
+    }
+
+    function resetData() {
+        checkLoggedIn(() => {
+            const eqpId = "<?php echo $key ?>";
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "../send_json.php", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log('Reset response:', xhr.responseText);
+                }
+            };
+            const data = JSON.stringify({ Function: "ResetLP", Data: "LP1", ActiveCCM: 1, EqpId: eqpId });
+            xhr.send(data);
         });
+    }
+
 }
+
 function showLoading<?php echo $key_div ?>() {
             document.getElementById('loading-<?php echo $key_div ?>').style.display = 'block';
         }
-
 function hideLoading<?php echo $key_div ?>() {
             document.getElementById('loading-<?php echo $key_div ?>').style.display = 'none';
         }
-
-//Remove WIP table data
-function RemoveItem() {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => {
-        controller.abort();
-    }, 2500); //
-    fetch('../api/received_data.json')
-        .then(response => response.json())
-        .then(data => {
-            const RemoveData = data["<?php echo $key ?>"].filter(item => item.Function === "RemoveWIPItem").map(item => item.List1[0]);
-            if (RemoveData.length > 0) {
-                // If RemoveData has value, make a request to the PHP script
-                return fetch('../include/removeWIP.php', {
-                    method: 'POST',
-                    body: JSON.stringify({ RemoveData: RemoveData }),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-            } else {
-                return Promise.resolve(); // No RemoveData, resolve immediately
-            }
-        })
-        .then(response => {
-            if (response && response.ok) {
-                showLoading<?php echo $key_div ?>(); 
-                console.log('PHP script executed successfully');
-            } else if (response) {
-                console.error('Failed to execute PHP script');
-            }
-            return response;
-        })
-        .catch(error => {
-        })
-        .finally(() => {
-            // Hide loading spinner after 5 seconds
-            setTimeout(hideLoading<?php echo $key_div ?>, 8000);
-        });
-}
-
-//Reset Load Port
-function resetData() {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => {
-        controller.abort();
-    }, 2500); //
-    var resetIfLoggedIn = function() {
-    // Make an AJAX call to the PHP function
-    var eqpId<?php echo $key_div ?> = "<?php echo $key?>" // Set the equipment ID here
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "../send_json.php", true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            // Request was successful, do something with the response if needed
-            var response = xhr.responseText;
-            console.log(response); // Output the response to the console
-        }
-    };
-    var data = JSON.stringify({
-        Function: "ResetLP",
-        Data: "LP1",
-        ActiveCCM: 1,
-        EqpId: eqpId
-    });
-    xhr.send(data);
-}
-checkLoggedIn(resetIfLoggedIn); 
-}
-
 function openLoadPopoutWindow() {
     // Define the URL of the pop-out window
     // Check if the user is logged in before opening the popout window
@@ -427,4 +324,5 @@ function openLoadPopoutWindow() {
 };
 checkLoggedIn(openWindowIfLoggedIn);
 }
+
 </script>
